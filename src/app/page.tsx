@@ -55,7 +55,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     if (categories && products) {
-      setSelectedCategory(categories[1])
+      setSelectedCategory(categories[0])
     }
   }, [categories, products])
 
