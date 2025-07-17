@@ -27,15 +27,14 @@ type QuickViewModalProps = {
 export default function ProductModal({ open, onClose, product }: QuickViewModalProps) {
   if (!product) return <LoadingIndicator />
   const { name, images, public_price, description, stock } = product
-  const [qtyToBuy, setQtyToBuy] = useState(0)
   return (
     <Modal open={open} onClose={onClose}>
-      <ModalDialog layout="center" size="lg" sx={{ maxWidth: 800 }}>
+      <ModalDialog layout="center" size="lg" sx={{ maxWidth: "800px", width: "90%" }}>
         <ModalClose />
 
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
           {/* Imagen */}
-          <AspectRatio ratio="1" sx={{ minWidth: 350, flex: 1 }}>
+          <AspectRatio ratio="1" sx={{ minWidth: 280, flex: 1 }}>
             <img src={images} alt={name} />
           </AspectRatio>
 

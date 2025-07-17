@@ -117,7 +117,7 @@ type QuantitySelectorProps = {
             setShouldDisplayCart(true)
           }}
         >
-            Agregar {quantity} al carrito
+            Añadir {quantity} pzas.
           </Button>
           </>
             

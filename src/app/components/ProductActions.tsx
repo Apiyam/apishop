@@ -33,6 +33,7 @@ export default function ProductActions({ onViewDetails, product, overrideActions
         gap: 1,
       }}
     >
+      <Box sx={{ display: 'flex', flexDirection:{xs: overrideActions ? 'column' : 'row', sm: 'row'}, justifyContent: 'space-around', alignItems: 'flex-start', gap: 1 }}>
       {overrideActions ? 
       <QuantitySelector product={product} /> : (
         <Button
@@ -57,11 +58,12 @@ export default function ProductActions({ onViewDetails, product, overrideActions
         startDecorator={<Visibility />}
         color="neutral"
         variant="outlined"
-        sx={{ width: '50%' }}
+        sx={{ width: {xs: overrideActions ? '100%' : '50%', sm: '50%' } }}
         onClick={onViewDetails}
       >
         Detalles
       </Button>
+      </Box>
     </Box>
   )
 }

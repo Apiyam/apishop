@@ -81,7 +81,7 @@ export default function ProductsPage() {
     }, 1000)
   }, [selectedCategory, selectedEstampados, isInStock])
 
-  if (!products || !categories) return <LoadingIndicator />
+  if (!products || !categories) return <LoadingIndicator isFullScreen={true} />
 
   const handleChangeEstampados = (
     event: React.SyntheticEvent | null,
