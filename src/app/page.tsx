@@ -109,7 +109,7 @@ export default function ProductsPage() {
           {/* Filtros laterales */}
           <Box sx={{ width: { xs: '100%', sm: 180 }, display: 'flex', flexDirection: 'column', gap: 2 }}>
             
-            <Accordion sx={{ mb: 2, width: '100%', maxHeight: '100vh', overflowY: 'auto' }} defaultExpanded={!isMobile}>
+            <Accordion sx={{ mb: 2, width: '100%' }} defaultExpanded={!isMobile}>
               <AccordionSummary>
                 <Typography level="h3" sx={{ mb: 1 }}>
                   Filtros
