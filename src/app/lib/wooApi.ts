@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 const WOO_URL = '/api/bd.json'
 const CONSUMER_KEY = 'ck_xxxxxx'
@@ -47,8 +48,8 @@ export type ProductItem = {
   }
 
 export const getProducts = async (): Promise<ProductItem[]> => {
-    const res = await axios.get('/api/bd.json')
-    const data = res.data
+    const res = await axios.get('https://n8n.srv912585.hstgr.cloud/webhook/lubella')
+    const data = res.data;
     const products: ProductItem[] = data.filter((product: ProductItem) => product.categories.includes('Mujer'))
     const parentMap = new Map<number, string[]>()
 

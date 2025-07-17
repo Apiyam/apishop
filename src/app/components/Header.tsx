@@ -33,7 +33,7 @@ export default function Header() {
       color="neutral"
       sx={{
         bgcolor: '#e8416c', // fondo rosa claro
-        borderBottom: '1px solidrgb(230, 120, 147)',
+        borderBottom: '1px solid rgb(230, 120, 147)',
         py: 1,
         position: 'sticky',
         top: 0,
@@ -50,9 +50,13 @@ export default function Header() {
       >
         {/* Logo / Título */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <IconButton variant="plain" sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
+          {
+            /*
+            <IconButton variant="plain" sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
             <MenuIcon />
           </IconButton>
+            */
+          }
           <img src="/imgs/logo.png" alt="Logo" width={120}  />
         </Box>
 

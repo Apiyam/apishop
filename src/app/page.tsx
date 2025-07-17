@@ -54,12 +54,10 @@ export default function ProductsPage() {
   }, [])
 
   useEffect(() => {
-    if (categories) {
-      setTimeout(() => {
-        setSelectedCategory(categories[0])
-      }, 1000)
+    if (categories && products) {
+      setSelectedCategory(categories[1])
     }
-  }, [categories])
+  }, [categories, products])
 
   useEffect(() => {
     setIsLoading(true)
@@ -111,7 +109,7 @@ export default function ProductsPage() {
           {/* Filtros laterales */}
           <Box sx={{ width: { xs: '100%', sm: 180 }, display: 'flex', flexDirection: 'column', gap: 2 }}>
             
-            <Accordion sx={{ mb: 2, width: '100%' }} defaultExpanded={!isMobile}>
+            <Accordion sx={{ mb: 2, width: '100%', maxHeight: '100vh', overflowY: 'auto' }} defaultExpanded={!isMobile}>
               <AccordionSummary>
                 <Typography level="h3" sx={{ mb: 1 }}>
                   Filtros
@@ -129,7 +127,7 @@ export default function ProductsPage() {
                   </Box>
                 {categories.map((cat) => (
                   <Box sx={{ display: 'flex', gap: 1, mb: 1 }} key={cat.name}>
-                    <Checkbox key={cat.name} label={cat.name} checked={selectedCategory?.name === cat.name} onChange={() => {
+                    <Checkbox label={cat.name} checked={selectedCategory?.name === cat.name} onChange={() => {
                       setSelectedCategory(cat)
                       setSelectedEstampados([])
                     }} />

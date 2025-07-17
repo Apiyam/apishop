@@ -24,7 +24,7 @@ export default function CategorySlider({ categories, onCategoryChange }: Categor
       }, [])
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    slides: { perView: isMobile ? 2 : 7, spacing: 10 },
+    slides: { perView: isMobile ? 2 : 7, spacing: 3 },
     created(s) {
       setTimeout(() => s.moveToIdx(3, true), 100)
     },
