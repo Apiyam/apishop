@@ -64,7 +64,7 @@ export default function ProductCard({ product, viewMode }: ProductCardProps) {
     )
   }else{
     return (
-      <Card sx={{ width: { xs: '100%', sm: 250 } }} variant="outlined">
+      <Card sx={{ width: { xs: '100%', sm: 280 } }} variant="outlined">
         <div>
           <Typography level="title-lg" sx={{ mb: 1 }}>{name}</Typography>
           <Chip variant="solid" color={stock > 0 ? 'success' : 'danger'} size="sm">
