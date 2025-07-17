@@ -108,7 +108,7 @@ type QuantitySelectorProps = {
             color="primary"
           fullWidth
           disabled={product.stock === 0 || product.stock === null}
-          sx={{ padding: 1.5, marginTop:"-20px" }}
+          sx={{ padding: 1.5, marginTop:"-20px", width: "120px" }}
           onClick={() => {
             addToCart({
               product: product,

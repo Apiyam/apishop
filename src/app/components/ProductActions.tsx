@@ -25,7 +25,7 @@ export default function ProductActions({ onViewDetails, product, overrideActions
     <Box
       sx={{
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start',
         alignItems: 'flex-start',
         borderTopLeftRadius: '12px',
         borderTopRightRadius: '12px',
@@ -33,7 +33,7 @@ export default function ProductActions({ onViewDetails, product, overrideActions
         gap: 1,
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection:{xs: overrideActions ? 'column' : 'row', sm: 'row'}, justifyContent: 'space-around', alignItems: 'flex-start', gap: 1 }}>
+      <Box sx={{ display: 'flex', flexDirection:{xs: overrideActions ? 'column' : 'row', sm: 'row'}, justifyContent: 'flex-start', alignItems: 'flex-start', gap: 1 }}>
       {overrideActions ? 
       <QuantitySelector product={product} /> : (
         <Button
