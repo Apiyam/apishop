@@ -1,0 +1,77 @@
+[
+  {
+    "parent": [
+      17219,
+      17217,
+      17211,
+      17201
+    ],
+    "name": "Calzón Menstrual",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2024/09/Calzon_menstrual_lubella_frente_adelante.png"
+  },
+  {
+    "parent": [
+      11330
+    ],
+    "name": "Delantal",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2024/03/Delantal-ecorevolucion.png"
+  },
+  {
+    "parent": [
+      20046
+    ],
+    "name": "Delantal Kids",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/01/Denantal_marca_Lubella_capibaras.png"
+  },
+
+  
+  {
+    "parent": [
+      4318
+    ],
+    "name": "Sobre",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_Sobre_Plumas.jpeg"
+  },
+  {
+    "parent": [
+      4277
+    ],
+    "name": "Pañoleta Estampada",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Lubella_mujer_outfit_panoleta_estampada_monarca.jpeg"
+  },
+  {
+    "parent": [
+      4236
+    ],
+    "name": "Toalla Femenina Nocturna",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/02/Ecorevolucion25-Nocturna.png"
+  },
+  {
+    "parent": [
+      4176
+    ],
+    "name": "Toalla Femenina Regular",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/01/Toalla_marca_Lubella_Regular_Estrellitas.png"
+  },
+  {
+    "parent": [
+      4115
+    ],
+    "name": "Toalla Femenina Teen",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_TeenLubella_Aguacates.jpeg"
+  },
+  {
+    "parent": [
+      4057
+    ],
+    "name": "Pantiprotector",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/01/Toalla_marca_Lubella_Pantiprotector_Capibaras.png"
+  },
+  {
+    "parent": [
+      4024
+    ],
+    "name": "Pantiprotector Tanga",
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_PantiT_Safari.jpeg"
+  }
+]

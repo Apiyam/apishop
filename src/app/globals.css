@@ -1,11 +1,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
@@ -13,8 +15,16 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: visible;
 }
+
+@media (max-width: 600px) {
+  body {
+    max-width: 92vw;
+    overflow: visible;
+  }
+}
+
 
 body {
   color: var(--foreground);
@@ -39,4 +49,15 @@ a {
   html {
     color-scheme: dark;
   }
+}
+:root {
+  --joy-palette-primary-solidBg: #e8416c;
+  --joy-palette-primary-plainColor: #e8416c;
+  --joy-palette-primary-outlinedBorder: #e8416c;
+  --joy-palette-primary-outlinedHoverBorder: #e8416c;
+  --joy-palette-primary-outlinedActiveBorder: #e8416c;
+  --joy-palette-primary-outlinedFocusBorder: #e8416c;
+  --joy-palette-primary-plainHoverBg: #f8bbd0;
+  --joy-palette-primary-plainActiveBg: #f8bbd0;
+  --joy-palette-primary-plainFocusBg: #f8bbd0;
 }
