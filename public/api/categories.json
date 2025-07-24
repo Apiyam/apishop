@@ -9,6 +9,7 @@
     "name": "Calzón Menstrual",
     "slug": "calzon-menstrual",
     "show": true,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2024/09/Calzon_menstrual_lubella_frente_adelante.png"
   },
   {
@@ -18,6 +19,7 @@
     "name": "Delantal",
     "slug": "delantal",
     "show": false,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2024/03/Delantal-ecorevolucion.png"
   },
   {
@@ -27,6 +29,7 @@
     "name": "Delantal Kids",
     "slug": "delantal-kids",
     "show": false,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/01/Denantal_marca_Lubella_capibaras.png"
   },
 
@@ -38,6 +41,7 @@
     "name": "Sobre",
     "slug": "sobre",
     "show": false,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_Sobre_Plumas.jpeg"
   },
   {
@@ -47,6 +51,7 @@
     "name": "Pañoleta Estampada",
     "slug": "panoleta-estampada",
     "show": false,
+    "discount": 70,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Lubella_mujer_outfit_panoleta_estampada_monarca.jpeg"
   },
   {
@@ -56,6 +61,7 @@
     "name": "Toalla Femenina Nocturna",
     "slug": "toalla-femenina-nocturna",
     "show": false,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/02/Ecorevolucion25-Nocturna.png"
   },
   {
@@ -65,6 +71,7 @@
     "name": "Toalla Femenina Regular",
     "slug": "toalla-femenina-regular",
     "show": false,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/01/Toalla_marca_Lubella_Regular_Estrellitas.png"
   },
   {
@@ -74,6 +81,7 @@
     "name": "Toalla Femenina Teen",
     "slug": "toalla-femenina-teen",
     "show": false,
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_TeenLubella_Aguacates.jpeg"
   },
   {
@@ -82,7 +90,8 @@
     ],
     "name": "Pantiprotector",
     "slug": "pantiprotector",
-    "show": false,
+    "show": false,  
+    "discount": 0,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2025/01/Toalla_marca_Lubella_Pantiprotector_Capibaras.png"
   },
   {
@@ -92,6 +101,17 @@
     "name": "Pantiprotector Tanga",
     "slug": "pantiprotector-tanga",
     "show": false,
+    "discount": 50,
     "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_PantiT_Safari.jpeg"
+  },
+  {
+    "parent": [
+      0
+    ],
+    "name": "Accesorios",
+    "slug": "accesorios",
+    "show": false,
+    "discount": 0,
+    "image": "https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_ToallaDesmaquillante_01.jpeg"
   }
 ]

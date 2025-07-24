@@ -55,7 +55,6 @@ export default function MainView({ selectedProduct }: MainViewProps) {
     }, [])
 
     useEffect(() => {
-        console.log(selectedProduct)
         if (categories && products && !selectedProduct) {
             setSelectedCategory(categories[0])
         } else if (categories && products && selectedProduct) {
@@ -88,6 +87,11 @@ export default function MainView({ selectedProduct }: MainViewProps) {
 
     if (!products || !categories || !loaded) return <LoadingIndicator isFullScreen={true} />
 
+
+    const checkDiscount = (product: ProductItem) => {
+        return categories.find((category) => category.name.includes(product.parent_name))?.discount || 0
+
+    }
     const handleChangeEstampados = (
         event: React.SyntheticEvent | null,
         newValue: Array<string> | null,
@@ -240,13 +244,13 @@ export default function MainView({ selectedProduct }: MainViewProps) {
                     {viewMode === 'grid' ? <Grid container spacing={2}>
                         {isLoading ? <LoadingIndicator /> : filteredProducts?.map((product: ProductItem) => (
                             <Grid xs={12} sm={4} key={product.sku}>
-                                <ProductCard product={product} viewMode={viewMode} />
+                                <ProductCard product={product} viewMode={viewMode} discount={checkDiscount(product)} />
                             </Grid>
                         ))}
                     </Grid> : <List sx={{ width: '100%' }}>
                         {filteredProducts?.map((product: ProductItem) => (
                             <ListItem key={product.sku} sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}>
-                                <ProductCard product={product} viewMode={viewMode} />
+                                <ProductCard product={product} viewMode={viewMode} discount={checkDiscount(product)} />
                                 <Divider />
                             </ListItem>
                         ))}

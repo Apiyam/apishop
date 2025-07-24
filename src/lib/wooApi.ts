@@ -41,6 +41,7 @@ export type ProductItem = {
     image: string
     slug: string
     show: boolean
+    discount: number
   }
 
   export const getCategories = async (): Promise<CategoryItem[]> => {
