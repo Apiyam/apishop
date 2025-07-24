@@ -48,9 +48,13 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
             <thead>
               <tr>
                 {!isMobile && <th></th>}
-                <th>Producto</th>
-                {!isMobile && <th>Cantidad</th>}
-                <th>Precio</th>
+                <th style={{ width: '150px' }}>Producto</th>
+                {!isMobile && (
+                  <>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </>
+                )}
                 <th>Total</th>
                 <th></th>
               </tr>
@@ -72,13 +76,18 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
                       </td>
                     )}
                     <td>
-                      <Typography fontWeight="md">{product.name}</Typography>
+                      <Typography fontWeight="md">{product.name} {isMobile && `(${price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })})`} </Typography>
                       {isMobile && <QuantitySelector product={product} simple />}
                     </td>
-                    {!isMobile && <td><QuantitySelector product={product} simple /></td>}
-                    <td>
-                      <Typography>{price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</Typography>
-                    </td>
+                    {!isMobile && (
+                      <>
+                        <td><QuantitySelector product={product} simple /></td>
+                        <td>
+                        <Typography>{price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</Typography>
+                      </td>
+                      </>
+                    )}
+                    
                     <td>
                       <Typography>{(price * quantity).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</Typography>
                     </td>
