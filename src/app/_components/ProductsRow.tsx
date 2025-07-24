@@ -67,13 +67,14 @@ export default function ProductsRow() {
                 sx={{
                   display: 'grid',
                   gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                  gridTemplateRows: { xs: '1fr 1fr', md: '1fr' },
                   gap: 4,
                   alignItems: 'center',
                   bgcolor: isEven ? 'rgba(252, 228, 236, 0.3)' : 'rgba(248, 187, 208, 0.3)',
                   borderRadius: 'md',
-                  py: 6,
-                  px: 4,
-                  mb: 4,
+                  py: { xs: 2, md: 6 },
+                  px: { xs: 0, md: 4 },
+                  mb: { xs: 2, md: 4 },
                   direction: isEven ? 'ltr' : 'rtl', // para alternar imagen/texto
                   '& > *': { direction: 'ltr' }, // para que el texto no se invierta
                 }}
@@ -97,7 +98,7 @@ export default function ProductsRow() {
                   style={{ maxHeight: '320px', objectFit: 'contain' }} />
                 </Box>
     
-                <Box>
+                <Box p={2}>
                   <Typography level="h4" sx={{ color: '#d81b60', fontWeight: 'xl', mb: 2 }}>
                     {product.title}
                   </Typography>
