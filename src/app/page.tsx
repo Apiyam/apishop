@@ -31,7 +31,7 @@ export default function HomePage() {
       
       <Box
         sx={{
-          backgroundColor: '#7cb947',
+          backgroundColor: '#7CBB48',
           color: 'white',
           textAlign: 'center',
           py: 6,

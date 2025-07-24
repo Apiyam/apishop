@@ -123,7 +123,7 @@ export default function Header() {
         variant="solid"
         color="neutral"
         sx={{
-          bgcolor: '#e8416c',
+          bgcolor: '#E9416C',
           borderBottom: '1px solid rgb(230, 120, 147)',
           py: 1,
           position: 'sticky',

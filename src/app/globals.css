@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Astronauta';
+  src: url('/fonts/Astronauta Script.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mango';
+  src: url('/fonts/Racy Mango.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Barmeno';
+  src: url('/fonts/Barmeno Medium.otf') format('opentype');
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -27,7 +43,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Barmeno', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -45,17 +61,31 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
 }
 :root {
-  --joy-palette-primary-solidBg: #e8416c;
-  --joy-palette-primary-plainColor: #e8416c;
-  --joy-palette-primary-outlinedBorder: #e8416c;
-  --joy-palette-primary-outlinedHoverBorder: #e8416c;
-  --joy-palette-primary-outlinedActiveBorder: #e8416c;
+  --joy-palette-primary-solidBg: #B62248;
+  --joy-palette-primary-plainColor: #B62248;
+  --joy-palette-primary-outlinedBorder: #B62248;
+  --joy-palette-primary-outlinedHoverBorder: #B62248;
+  --joy-palette-primary-outlinedActiveBorder: #B62248;
   --joy-palette-primary-outlinedFocusBorder: #e8416c;
   --joy-palette-primary-plainHoverBg: #f8bbd0;
   --joy-palette-primary-plainActiveBg: #f8bbd0;
   --joy-palette-primary-plainFocusBg: #f8bbd0;
+
+
+  --joy-fontFamily-body: 'Barmeno', Arial, Helvetica, sans-serif;
+  --joy-fontFamily-h2: 'Astronauta', Arial, Helvetica, sans-serif;
+
+}
+
+h2{
+  font-family: 'Mango', Arial, Helvetica, sans-serif !important;
+}
+
+p, h4, h3, h5, h6, button{
+  font-family: 'Barmeno', Arial, Helvetica, sans-serif !important;
+  font-weight: 100 !important;
 }
