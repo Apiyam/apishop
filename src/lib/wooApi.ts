@@ -39,6 +39,8 @@ export type ProductItem = {
     parent: number[]
     name: string
     image: string
+    slug: string
+    show: boolean
   }
 
   export const getCategories = async (): Promise<CategoryItem[]> => {

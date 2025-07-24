@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "./context/CartContext";
+import { CartProvider } from "../context/CartContext";
 import { Analytics } from "@vercel/analytics/next"
+import Head from "next/head";
+import Header from "../components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +36,12 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`} >
         <Analytics />
         <CartProvider>
+          <Head>
+            <title>Sitio de compras Lubella</title>
+            <meta name="description" content="Sitio de compras Lubella, productos de Lubella, productos de Lubella en México" />
+            <link rel="icon" href="/imgs/favicon.png" />
+          </Head>
+          <Header />
           {children}
         </CartProvider>
       </body>
