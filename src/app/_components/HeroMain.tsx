@@ -4,9 +4,21 @@ import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import padsImage from '../../../public/imgs/pads.png';
+import slide1 from '../../../public/imgs/slide1.jpg';
+import slide2 from '../../../public/imgs/slide2.jpg';
+import slide3 from '../../../public/imgs/slide3.jpg';
+import slide4 from '../../../public/imgs/slide4.jpg';
+import slide5 from '../../../public/imgs/slide5.jpg';
+import slide6 from '../../../public/imgs/slide6.jpg';
 import { Link } from '@mui/joy';
+import Masonry from 'react-masonry-css'
+const images = [slide1, slide5, slide4]
 
+const breakpointColumnsObj = {
+  default: 3,
+  1100: 2,
+  700: 1,
+}
 function AnimatedDotsCanvas({ scrollYValue }: { scrollYValue: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dots = useRef<
@@ -167,7 +179,8 @@ export default function HeroMain() {
             Conoce Lubella
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
-            Revoluciona tu bienestar íntimo con toallas femeninas reutilizables, ecológicas y orgullosamente mexicanas. Cuida tu cuerpo, honra tu ciclo y protege el planeta.
+          Revoluciona tu bienestar íntimo con toallas femeninas reutilizables y calzones menstruales, opciones ecológicas, cómodas y orgullosamente mexicanas.
+          Cuida tu cuerpo, honra tu ciclo y protege el planeta con productos que te acompañan en cada etapa.
           </Typography>
 
           <Link href="/tienda" underline="none">
@@ -180,20 +193,36 @@ export default function HeroMain() {
                 fontSize: '1.2rem',
                 }}
             >
-                Comprar ahora
+                Comprar mi calzón menstrual
             </Button>
           </Link>
+          <div style={{ height: '30px' }}></div>
         </motion.div>
 
         {/* Imagen con parallax */}
-        <motion.div
-          style={{ y: y2, marginTop: '3rem', maxWidth: 400, marginInline: 'auto' }}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          <Image src={padsImage} alt="Lubella Hero" layout="responsive" />
-        </motion.div>
+        <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {images.map((img, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            viewport={{ once: true }}
+            style={{ marginBottom: '1rem', borderRadius: 12, overflow: 'hidden' }}
+          >
+            <Image
+              src={img}
+              alt={`Lubella slide ${i}`}
+              layout="responsive"
+              placeholder="blur"
+            />
+          </motion.div>
+        ))}
+      </Masonry>
       </Container>
 
       {/* Curva inferior SVG */}

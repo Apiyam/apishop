@@ -19,7 +19,8 @@
     "keen-slider": "^6.8.6",
     "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-masonry-css": "^1.0.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

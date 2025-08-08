@@ -2,19 +2,14 @@ import { Box, Typography, Button, Link } from '@mui/joy';
 
 const products = [
   {
-    title: 'Wet Bag Sobre',
-    description: `Esta bolsita es ideal para llevar tus toallas sanitarias limpias y almacenar las sucias ya que cuentan con un doble cierre. La tela es impermeable así que no saldrá ningún olor ni humedad.\n\nTiene una medida aproximada de 15 × 24 cm. y le caben entre 7 y 9 toallas.`,
-    cta: 'Quiero mi Wet Bag',
-    img: '/imgs/sobre.png',
-    slug: 'sobre',
-  },
-  {
-    title: 'Mini Wet Bag',
-    description: `Esta bolsita es ideal para llevar tus toallas sanitarias limpias y almacenar las sucias ya que cuentan con un doble cierre. La tela es impermeable así que no saldrá ningún olor ni humedad.\n\nContamos además con muchos diseños diferentes, para que elijas la que mejor se lleve con tu estilo:`,
-    cta: 'Quiero mi Mini Wet Bag',
-    img: '/imgs/mini.png',
-    slug: 'sobre',
-  },
+    title: 'Calzón menstrual',
+    description: `Siéntete como en cualquier otro día pero con un calzón menstrual reutilizable y cómodo, en un diseño anatómico y con excelente y súper absorción, no altera tus ciclos menstruales y no tendrás fugas. Ir al gym, salir a correr, ir de paseo serán actividades que harás sin temor a tener accidentes.`,
+    cta: 'Quiero mi Calzón menstrual',
+    img: '/imgs/calzon.png',
+    slug: 'calzon-menstrual',
+  }
+  ,
+  
   {
     title: 'Toalla Femenina Regular',
     description: `La tela exterior de nuestras toallas se llama PUL, es ideal ya que es impermeable pero a la vez transpirable, por lo que te mantiene fresca y sin accidentes. En su interior cuentan con capas absorbentes de microfibra, el cual tiene la propiedad de ser sumamente absorbente, antibacterial y no guarda olores. La tela que va en contacto con la piel se mantiene seca y fresca, además de ser sumamente fácil de desmanchar sin necesidad de usar cloro. Cuentan con una forma anatómica que se adapta a tu cuerpo, y traen alas para abrocharlas en tu pantaleta con un botón de poliresina.\n\nPuedes ver que contamos con muchos diseños diferentes, para que elijas la que más te guste:`,
@@ -49,6 +44,13 @@ const products = [
     cta: 'Quiero mi Panti Tanga',
     img: '/imgs/tanga.png',
     slug: 'pantiprotector-tanga',
+  },
+  {
+    title: 'Wet Bag Sobre',
+    description: `Esta bolsita es ideal para llevar tus toallas sanitarias limpias y almacenar las sucias ya que cuentan con un doble cierre. La tela es impermeable así que no saldrá ningún olor ni humedad.\n\nTiene una medida aproximada de 15 × 24 cm. y le caben entre 7 y 9 toallas.`,
+    cta: 'Quiero mi Wet Bag',
+    img: '/imgs/sobre.png',
+    slug: 'sobre',
   },
 ];
 

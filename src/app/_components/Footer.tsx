@@ -3,7 +3,7 @@ import { Box,  Typography } from "@mui/joy";
 
 export default function Footer() {
     return (
-        <Box sx={{ bgcolor: '#d81b60', width: '100%', display: 'flex', justifyContent: 'center', mt: 4, flexDirection: 'column', gap: 2, py: 4 }}>
+        <Box sx={{ bgcolor: '#e8416c', width: '100%', display: 'flex', justifyContent: 'center', mt: 4, flexDirection: 'column', gap: 2, py: 4 }}>
     <img style={{ margin: '0 auto' }} src="/imgs/logo.png" alt="Lubella" width={320} />
     <Typography
       textAlign="center"

@@ -41,7 +41,7 @@ export default function ContactForm() {
         variant="solid"
         sx={{
           mt: 1,
-          backgroundColor: '#f50086',
+          backgroundColor: '#e8416c',
           color: 'white',
           fontWeight: 'lg',
           '&:hover': {

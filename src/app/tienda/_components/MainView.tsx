@@ -50,43 +50,47 @@ export default function MainView({ selectedProduct }: MainViewProps) {
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
     const [showTable, setShowTable] = useState(false)
 
+
+
     useEffect(() => {
         getCategories().then((categories) => setCategories(categories))
     }, [])
 
+
     useEffect(() => {
-        if (categories && products && !selectedProduct) {
-            setSelectedCategory(categories[0])
-        } else if (categories && products && selectedProduct) {
+        if (categories && products && selectedProduct) {
             console.log(categories.find((category) => category.slug == selectedProduct))
             setSelectedCategory(categories.find((category) => category.slug == selectedProduct) || categories[0])
+        } else {
+            setSelectedCategory(categories?.[0] || null)
         }
     }, [categories, products, selectedProduct])
 
     useEffect(() => {
-        setIsLoading(true)
-        let filtered: ProductItem[] = []
-        if (selectedCategory) {
-            filtered = products?.filter((product: ProductItem) =>
-                selectedCategory.parent.includes(product.parent)
-                && (isInStock ? product.stock > 0 : product.stock === 0)) || []
-        } else {
-            filtered = products?.filter((product: ProductItem) =>
-                (isInStock ? product.stock > 0 : product.stock === 0)) || []
+        if (products) {
+            setIsLoading(true)
+            let filtered: ProductItem[] = []
+            if (selectedCategory) {
+                filtered = products?.filter((product: ProductItem) =>
+                    selectedCategory.parent.includes(product.parent)
+                    && (isInStock ? product.stock > 0 : product.stock === 0)) || []
+            } else {
+                filtered = products?.filter((product: ProductItem) =>
+                    (isInStock ? product.stock > 0 : product.stock === 0)) || []
+            }
+            if (selectedEstampados.length > 0 && filtered) {
+                const filteringProducts = selectedEstampados.map((estampado) => filtered?.filter((product) => product.name.includes(estampado)))
+                setFilteredProducts(filteringProducts.flat().filter((product) => product !== undefined))
+            } else {
+                setFilteredProducts(filtered)
+            }
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 1000)
         }
-        if (selectedEstampados.length > 0 && filtered) {
-            const filteringProducts = selectedEstampados.map((estampado) => filtered?.filter((product) => product.name.includes(estampado)))
-            setFilteredProducts(filteringProducts.flat().filter((product) => product !== undefined))
-        } else {
-            setFilteredProducts(filtered)
-        }
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 1000)
-    }, [selectedCategory, selectedEstampados, isInStock])
+    }, [selectedCategory, selectedEstampados, isInStock, products])
 
-    if (!products || !categories || !loaded) return <LoadingIndicator isFullScreen={true} />
-
+    if (!categories || !products || !loaded) return <LoadingIndicator isFullScreen={true} />
 
     const checkDiscount = (product: ProductItem) => {
         return categories.find((category) => category.name.includes(product.parent_name))?.discount || 0
@@ -107,13 +111,13 @@ export default function MainView({ selectedProduct }: MainViewProps) {
                 setSelectedEstampados([])
             }} />
             <Typography level="h3" sx={{ mt: 2, textAlign: 'center', color: '#e8416c' }}>Productos {selectedCategory?.name && `- ${selectedCategory?.name}`}</Typography>
-{
-    selectedCategory?.slug == "calzon-menstrual" && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Button startDecorator={<TableChartOutlined />} color="primary" variant="solid" sx={{ mt: 2, textAlign: 'center' }} onClick={() => setShowTable(true)}>Consulta la tabla de tallas</Button>
-        </Box>
-    )
-}
+            {
+                selectedCategory?.slug == "calzon-menstrual" && (
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Button startDecorator={<TableChartOutlined />} color="primary" variant="solid" sx={{ mt: 2, textAlign: 'center' }} onClick={() => setShowTable(true)}>Consulta la tabla de tallas</Button>
+                    </Box>
+                )
+            }
 
 
             <Box sx={{ display: 'flex', gap: 4, mt: 4, flexDirection: { xs: 'column', sm: 'row' } }}>
@@ -257,41 +261,41 @@ export default function MainView({ selectedProduct }: MainViewProps) {
                     </List>}
                 </Box>
             </Box>
-            {showTable && 
-            <Modal open={showTable} onClose={() => setShowTable(false)}>
-            <Sheet
-              sx={{
-                width: { xs: '100%', sm: 500 },
-                mx: 'auto',
-                mt: '3vh',
-                borderRadius: 'md',
-                p: 4,
-                boxShadow: 'lg',
-                bgcolor: 'background.body',
-                outline: 'none',
-                textAlign: 'center',
-              }}
-            >
-              <img
-                src="/imgs/guia.jpg"
-                alt="Tabla de tallas"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                }}
-              />
-              <Button
-                variant="outlined"
-                color="neutral"
-                onClick={() => setShowTable(false)}
-                sx={{ mt: 3 }}
-              >
-                Cerrar
-              </Button>
-            </Sheet>
-          </Modal>
+            {showTable &&
+                <Modal open={showTable} onClose={() => setShowTable(false)}>
+                    <Sheet
+                        sx={{
+                            width: { xs: '100%', sm: 500 },
+                            mx: 'auto',
+                            mt: '3vh',
+                            borderRadius: 'md',
+                            p: 4,
+                            boxShadow: 'lg',
+                            bgcolor: 'background.body',
+                            outline: 'none',
+                            textAlign: 'center',
+                        }}
+                    >
+                        <img
+                            src="/imgs/guia.jpg"
+                            alt="Tabla de tallas"
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: '8px',
+                                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                            }}
+                        />
+                        <Button
+                            variant="outlined"
+                            color="neutral"
+                            onClick={() => setShowTable(false)}
+                            sx={{ mt: 3 }}
+                        >
+                            Cerrar
+                        </Button>
+                    </Sheet>
+                </Modal>
             }
         </Container>
     )

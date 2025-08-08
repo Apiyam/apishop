@@ -20,7 +20,9 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
 
   useEffect(() => {
     getCategories().then((categories) => setCategories(categories))
-    setIsMobile(window.innerWidth < 600)
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 600)
+    }
   }, [])
 
   const getDiscountedPrice = (product: ProductItem) => {
@@ -76,7 +78,10 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
                       </td>
                     )}
                     <td>
-                      <Typography fontWeight="md">{product.name} {isMobile && `(${price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })})`} </Typography>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        {isMobile && <Box component="img" src={product.images} alt={product.name} sx={{ width: 48, height: 48, borderRadius: 'md' }} />}
+                        <Typography fontWeight="md">{product.name}</Typography>
+                      </Box>
                       {isMobile && <QuantitySelector product={product} simple />}
                     </td>
                     {!isMobile && (
@@ -104,14 +109,14 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
         </Box>
 
         {cartItems.length > 0 && (
-          <>
+          <div>
             {goingToWordpress && (
               <Alert color="primary" variant="soft">
                 <Typography fontWeight="lg">Vas a ser redirigido para pagar.</Typography>
               </Alert>
             )}
             {!goingToWordpress && (
-              <>
+              <div>
               <Box sx={{ display: 'flex', gap: 2 }}>
                 <Button fullWidth color="primary" onClick={goToWordpress}>
                   Ir a pagar: {getTotal().toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
@@ -121,7 +126,7 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
                 </Button>
               </Box>
               <Typography sx={{ fontSize: '12px' }}>*Precios de envío y descuentos adicionales se calculan en el siguiente paso.</Typography>
-              </>
+              </div>
             )}
             <ConfirmationModal
               open={clearCartModal}
@@ -134,7 +139,7 @@ export default function CartModal({ open, onClose }: { open: boolean; onClose: (
                 onClose()
               }}
             />
-          </>
+          </div>
         )}
       </ModalDialog>
     </Modal>
