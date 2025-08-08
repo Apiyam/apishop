@@ -20,27 +20,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Lubella – Bienestar íntimo consciente",
   description: "Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más",
+  icons: {
+    icon: 'https://www.lubella.com.mx/imgs/favicon.png',
+    shortcut: 'https://www.lubella.com.mx/imgs/favicon.png',
+    apple: 'https://www.lubella.com.mx/imgs/favicon.png',
+    other: {
+      rel: 'icon',
+      url: 'https://www.lubella.com.mx/imgs/favicon.png',
+    },
+  },
   openGraph: {
     title: "Lubella – Bienestar íntimo consciente",
     description: "Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más",
-    images: "/imgs/lubella-productos.JPG",
+    images: "https://www.lubella.com.mx/imgs/lubella-productos.JPG",
+    url: "https://lubella.com.mx",
+    siteName: "Lubella",
+    locale: "es_MX",
+    type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Lubella – Bienestar íntimo consciente",
     description: "Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más",
-    images: "/imgs/lubella-productos.JPG",
+    images: "https://www.lubella.com.mx/imgs/lubella-productos.JPG",
   },
-  icons: {
-    icon: '/imgs/favicon.png',
-    shortcut: '/imgs/favicon.png',
-    apple: '/imgs/favicon.png',
-    other: {
-      rel: 'icon',
-      url: '/imgs/favicon.png',
-    },
-  },
+  
 };
 
 export default function RootLayout({
