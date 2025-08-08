@@ -62,16 +62,16 @@ export default function RootLayout({
 
         <meta property="og:title" content="Lubella – Bienestar íntimo consciente" />
         <meta property="og:description" content="Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más" />
-        <meta property="og:image" content="/imgs/lubella-productos.JPG" />
+        <meta property="og:image" content="https://www.lubella.com.mx/imgs/lubella-productos.JPG" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lubella.com.mx" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Lubella – Bienestar íntimo consciente" />
         <meta name="twitter:description" content="Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más" />
-        <meta name="twitter:image" content="/imgs/lubella-productos.JPG" />
+        <meta name="twitter:image" content="https://www.lubella.com.mx/imgs/lubella-productos.JPG" />
 
-        <link rel="icon" href="/imgs/favicon.png" />
+        <link rel="icon" href="https://www.lubella.com.mx/imgs/favicon.png" />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable}`} >
         <Analytics />
