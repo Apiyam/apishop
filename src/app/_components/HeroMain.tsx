@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -10,7 +10,7 @@ import slide3 from '../../../public/imgs/slide3.jpg';
 import slide4 from '../../../public/imgs/slide4.jpg';
 import slide5 from '../../../public/imgs/slide5.jpg';
 import slide6 from '../../../public/imgs/slide6.jpg';
-import { Link } from '@mui/joy';
+import { Link, Modal, Sheet } from '@mui/joy';
 import Masonry from 'react-masonry-css'
 const images = [slide1, slide5, slide4]
 
@@ -125,6 +125,8 @@ function AnimatedDotsCanvas({ scrollYValue }: { scrollYValue: number }) {
 }
 
 export default function HeroMain() {
+
+  const [showGuide, setShowGuide] = useState(false);
   const { scrollY } = useScroll();
 
   // Parallax background y movimiento
@@ -183,6 +185,7 @@ export default function HeroMain() {
           Cuida tu cuerpo, honra tu ciclo y protege el planeta con productos que te acompañan en cada etapa.
           </Typography>
 
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
           <Link href="/tienda" underline="none">
             <Button
                 variant="contained"
@@ -196,8 +199,59 @@ export default function HeroMain() {
                 Comprar mi calzón menstrual
             </Button>
           </Link>
+          <Button 
+            onClick={() => setShowGuide(true)}
+            variant="contained"
+            size="large"
+            sx={{
+            backgroundColor: '#7CBB48',
+            '&:hover': { backgroundColor: '#66993d' },
+            fontSize: '1.2rem',
+          }}
+          >
+            Consulta guía de tallas
+          </Button>
+          </Box>
           <div style={{ height: '30px' }}></div>
         </motion.div>
+
+        {showGuide && (
+          <Modal open={showGuide} onClose={() => setShowGuide(false)}>
+          <Sheet
+              sx={{
+                  width: { xs: '100%', sm: 600 },
+                  mx: 'auto',
+                  mt: '3vh',
+                  borderRadius: 'md',
+                  p: 4,
+                  boxShadow: 'lg',
+                  bgcolor: 'background.body',
+                  outline: 'none',
+                  textAlign: 'center',
+              }}
+          >
+              <img
+                  src="/imgs/guia.jpg"
+                  alt="Tabla de tallas"
+                  loading="lazy"
+                  style={{
+                      width: '100%',
+                      height: 'auto',
+                      borderRadius: '8px',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  }}
+              />
+              <Button
+                  variant="outlined"
+                  color="info"
+                  onClick={() => setShowGuide(false)}
+                  sx={{ mt: 3 }}
+              >
+                  Cerrar
+              </Button>
+          </Sheet>
+      </Modal>
+        )}
 
         {/* Imagen con parallax */}
         <Masonry
@@ -218,6 +272,7 @@ export default function HeroMain() {
               src={img}
               alt={`Lubella slide ${i}`}
               layout="responsive"
+              loading="lazy"
               placeholder="blur"
             />
           </motion.div>

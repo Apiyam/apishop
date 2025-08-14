@@ -59,7 +59,6 @@ export default function MainView({ selectedProduct }: MainViewProps) {
 
     useEffect(() => {
         if (categories && products && selectedProduct) {
-            console.log(categories.find((category) => category.slug == selectedProduct))
             setSelectedCategory(categories.find((category) => category.slug == selectedProduct) || categories[0])
         } else {
             setSelectedCategory(categories?.[0] || null)

@@ -97,6 +97,7 @@ export default function ProductsRow() {
                   src={product.img} 
                   alt={product.title} 
                   width={320} 
+                  loading="lazy"
                   style={{ maxHeight: '320px', objectFit: 'contain' }} />
                 </Box>
     

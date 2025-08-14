@@ -5,12 +5,7 @@ import {
   Typography,
   Button,
   Container,
-  Grid,
-  Paper,
-  useTheme,
 } from '@mui/material';
-import Image from 'next/image';
-import padsImage from '../../public/imgs/pads.png'; // Asegúrate de tener esta imagen en /public
 import HeroMain from './_components/HeroMain';
 import BenefitCards from './_components/BenefitCards';
 import BenefitsIcons from './_components/BenefitsIcons';
@@ -20,7 +15,6 @@ import Footer from './_components/Footer';
 import { Link } from '@mui/joy';
 
 export default function HomePage() {
-  const theme = useTheme();
 
   return (
     <>

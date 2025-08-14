@@ -1,17 +1,6 @@
 import axios from 'axios'
-import { NextApiRequest, NextApiResponse } from 'next'
 
-const WOO_URL = '/api/bd.json'
-const CONSUMER_KEY = 'ck_xxxxxx'
-const CONSUMER_SECRET = 'cs_xxxxxx'
-
-export const wooApi = axios.create({
-  baseURL: WOO_URL,
-  auth: {
-    username: CONSUMER_KEY,
-    password: CONSUMER_SECRET,
-  },
-})
+const endpoint = process.env.NEXT_PUBLIC_PRODUCTS_ENDPOINT as string
 
 export type ProductItem = {
     sku: string
@@ -51,7 +40,7 @@ export type ProductItem = {
   }
 
 export const getProducts = async (): Promise<ProductItem[]> => {
-    const res = await axios.get('https://n8n.srv912585.hstgr.cloud/webhook/lubella')
+    const res = await axios.get(endpoint)
     const data = res.data;
     const products: ProductItem[] = data.filter((product: ProductItem) => product.categories.includes('Mujer'))
     const parentMap = new Map<number, string[]>()
@@ -67,6 +56,6 @@ export const getProducts = async (): Promise<ProductItem[]> => {
       name,
     }))
   
-    console.log('PARENTS:', parents)
+    
     return products
   }
