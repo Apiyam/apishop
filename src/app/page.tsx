@@ -13,11 +13,14 @@ import ProductsRow from './_components/ProductsRow';
 import AboutContact from './_components/AboutContact';
 import Footer from './_components/Footer';
 import { Link } from '@mui/joy';
+import { SEOConfig } from '../components/SEOConfig';
 
 export default function HomePage() {
 
   return (
     <>
+    
+    <SEOConfig />
     <Box>
       {/* Hero section */}
       <HeroMain />

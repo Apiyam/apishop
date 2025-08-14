@@ -5,7 +5,6 @@ import { CartProvider } from "../context/CartContext";
 import { Analytics } from "@vercel/analytics/next"
 import Header from "../components/Header";
 import WhatsappButton from "./_components/WhatsappButton";
-import {SEOConfig} from "../components/SEOConfig";
 import { PostHogContext } from "../context/PostHogContext";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN as string;
@@ -57,9 +56,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
       <PostHogContext>
         <Analytics />
-        <SEOConfig />
         <CartProvider>
-          
           <Header />
           {children}
           <WhatsappButton />
