@@ -181,7 +181,7 @@ export default function HeroMain() {
             Conoce Lubella
           </Typography>
           {
-            /*
+            
             <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
           Revoluciona tu bienestar íntimo con toallas femeninas reutilizables y calzones menstruales, opciones ecológicas, cómodas y orgullosamente mexicanas.
           Cuida tu cuerpo, honra tu ciclo y protege el planeta con productos que te acompañan en cada etapa.
@@ -215,7 +215,7 @@ export default function HeroMain() {
           </Button>
           </Box>
             
-            */
+            
           }
           <div style={{ height: '30px' }}></div>
         </motion.div>
@@ -264,7 +264,7 @@ export default function HeroMain() {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {/*images.map((img, i) => (
+        {images.map((img, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 50 }}
@@ -281,12 +281,10 @@ export default function HeroMain() {
               placeholder="blur"
             />
           </motion.div>
-        ))*/}
+        ))}
       </Masonry>
       </Container>
-      <Box sx={{ width: '100%', textAlign: 'center' }}>
-        <img src="/imgs/lubefin.jpg" alt="Lubella Buen Fin" loading="lazy" width="100%" />
-      </Box>
+      
 
       {/* Curva inferior SVG */}
       <Box
