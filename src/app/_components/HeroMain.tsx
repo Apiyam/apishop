@@ -182,6 +182,7 @@ export default function HeroMain() {
           </Typography>
           {
             
+            <Box>
             <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
           Revoluciona tu bienestar íntimo con toallas femeninas reutilizables y calzones menstruales, opciones ecológicas, cómodas y orgullosamente mexicanas.
           Cuida tu cuerpo, honra tu ciclo y protege el planeta con productos que te acompañan en cada etapa.
@@ -214,7 +215,7 @@ export default function HeroMain() {
             Consulta guía de tallas
           </Button>
           </Box>
-            
+          </Box>
             
           }
           <div style={{ height: '30px' }}></div>
