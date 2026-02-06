@@ -20,6 +20,7 @@ export default function HomePage() {
     <>
     <Box>
       {/* Hero section */}
+      <img style={{ width: '100%', height: 'auto' }} src="/imgs/lubella.jpeg" alt="Hero" />
       <HeroMain />
       <BenefitCards />
       
