@@ -11,11 +11,10 @@ import {
   Stack,
 } from '@mui/joy'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
-import CelebrationIcon from '@mui/icons-material/Celebration'
 import Link from 'next/link'
 import { LUBELLA_PACKS } from './types'
 import LubellaWizard from './LubellaWizard'
-import { HealthAndSafety, HeatPumpRounded } from '@mui/icons-material'
+import { HealthAndSafety } from '@mui/icons-material'
 
 const LUBELLA_PINK = '#e91e8c'
 const LUBELLA_PINK_HOVER = '#c41a75'

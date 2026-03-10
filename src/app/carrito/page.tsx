@@ -41,13 +41,9 @@ export default function CarritoPage() {
   const [removeLubellaModal, setRemoveLubellaModal] = useState(false)
   const [detailsKitOpen, setDetailsKitOpen] = useState(false)
   const [goingToWordpress, setGoingToWordpress] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     getCategories().then((categories) => setCategories(categories))
-    if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth < 600)
-    }
   }, [])
 
   const getDiscountedPrice = (product: ProductItem) => {
@@ -97,7 +93,7 @@ export default function CarritoPage() {
               <Typography fontWeight="700" sx={{ color: '#111', fontSize: '1.05rem' }}>
                 {lubellaPackInCart.pack.name}
               </Typography>
-              <Typography level="body2" sx={{ color: 'neutral.600', fontSize: '0.85rem' }}>
+              <Typography level="body-sm" sx={{ color: 'neutral.600', fontSize: '0.85rem' }}>
                 Paquete especial
               </Typography>
             </Box>
@@ -127,7 +123,7 @@ export default function CarritoPage() {
               alt={LUBELLA_DETERGENT.name}
               sx={{ width: 56, height: 56, borderRadius: '8px', objectFit: 'cover' }}
             />
-            <Typography level="body2" sx={{ color: 'neutral.700' }}>
+            <Typography level="body-sm" sx={{ color: 'neutral.700' }}>
               1 {LUBELLA_DETERGENT.name}
             </Typography>
           </Box>
@@ -194,24 +190,24 @@ export default function CarritoPage() {
       {/* Modal Detalles del kit */}
       <Modal open={detailsKitOpen} onClose={() => setDetailsKitOpen(false)}>
         <ModalDialog size="sm" sx={{ maxWidth: 400 }}>
-          <Typography level="h6">Contenido del kit</Typography>
+          <Typography level="title-sm">Contenido del kit</Typography>
           {lubellaPackInCart && (
             <Stack spacing={1.5} sx={{ mt: 1 }}>
               {lubellaPackInCart.selectedLigeroModerado.map((p) => (
                 <Box key={p.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Box component="img" src={p.images} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
-                  <Typography level="body2">Ligero/Moderado: {p.name}</Typography>
+                  <Typography level="body-sm">Ligero/Moderado: {p.name}</Typography>
                 </Box>
               ))}
               {lubellaPackInCart.selectedModeradoAbundante.map((p) => (
                 <Box key={p.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Box component="img" src={p.images} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
-                  <Typography level="body2">Moderado/Abundante: {p.name}</Typography>
+                  <Typography level="body-sm">Moderado/Abundante: {p.name}</Typography>
                 </Box>
               ))}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pt: 1, borderTop: '1px solid', borderColor: 'neutral.outlinedBorder' }}>
                 <Box component="img" src={detergentImage} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
-                <Typography level="body2">1 {LUBELLA_DETERGENT.name}</Typography>
+                <Typography level="body-sm">1 {LUBELLA_DETERGENT.name}</Typography>
               </Box>
             </Stack>
           )}
@@ -288,7 +284,7 @@ export default function CarritoPage() {
       )}
 
       {cartItems.length === 0 && lubellaPackInCart && (
-        <Typography level="body2" sx={{ color: 'neutral.600', mb: 2 }}>
+        <Typography level="body-sm" sx={{ color: 'neutral.600', mb: 2 }}>
           No hay otros productos en el carrito.
         </Typography>
       )}
@@ -352,7 +348,7 @@ export default function CarritoPage() {
               >
                 Continuar comprando
               </Button>
-              <Typography level="body2" sx={{ color: 'neutral.600', fontStyle: 'italic', textAlign: 'center' }}>
+              <Typography level="body-sm" sx={{ color: 'neutral.600', fontStyle: 'italic', textAlign: 'center' }}>
                 *Precios de envío y descuentos adicionales se calculan en el siguiente paso.
               </Typography>
             </Stack>
