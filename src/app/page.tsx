@@ -45,15 +45,26 @@ export default function HomePage() {
             pañoletas, desmaquillantes y detergente especial para lavar tus toallas.
           </Typography>
 
-          <Link href="/tienda" underline="none">
-            <Button
-              variant="contained"
-              size="large"
-              sx={{ mt: 4, backgroundColor: 'white', color: '#f50086', fontWeight: 'bold' }}
-            >
-              ¿Quieres saber más?
-            </Button>
-          </Link>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center', mt: 4, flexWrap: 'wrap' }}>
+            <Link href="/tienda" underline="none">
+              <Button
+                variant="contained"
+                size="large"
+                sx={{ backgroundColor: 'white', color: '#f50086', fontWeight: 'bold', width: { xs: '100%', sm: 'auto' } }}
+              >
+                ¿Quieres saber más?
+              </Button>
+            </Link>
+            <Link href="/especial" underline="none">
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{ borderColor: '#f50086', color: '#f50086', fontWeight: 'bold', width: { xs: '100%', sm: 'auto' } }}
+              >
+                Kits especial
+              </Button>
+            </Link>
+          </Box>
         </Container>
       </Box>
       <ProductsRow />

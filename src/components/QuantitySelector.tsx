@@ -1,5 +1,6 @@
 import { Box, IconButton, Input, Button } from "@mui/joy"
 import { useCallback, useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
 import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import { useCart } from "../context/CartContext"
@@ -12,7 +13,8 @@ type QuantitySelectorProps = {
   }
   
  export default function QuantitySelector({ product, simple }: QuantitySelectorProps) {
-    const { addToCart, searchItem, setShouldDisplayCart } = useCart()
+    const { addToCart, searchItem } = useCart()
+  const router = useRouter()
     const item = searchItem(product.id)
     const [quantity, setQuantity] = useState(item?.quantity || 1)
     const [addedToCart, setAddedToCart] = useState(false)
@@ -114,7 +116,7 @@ type QuantitySelectorProps = {
               product: product,
               quantity: quantity,
             })
-            setShouldDisplayCart(true)
+            router.push('/carrito')
           }}
         >
             Añadir {quantity} pzas.

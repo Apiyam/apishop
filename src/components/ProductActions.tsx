@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { Box, Button, IconButton } from '@mui/joy'
+import { Box, Button } from '@mui/joy'
 import { ShoppingCart, Visibility } from '@mui/icons-material'
 import { ProductItem } from '../lib/wooApi'
 import QuantitySelector from './QuantitySelector'
 import { useCart } from '../context/CartContext'
-import { useEffect, useState } from 'react'
-import Notification from './Notification'
+import { useRouter } from 'next/navigation'
 
 type ProductActionsProps = {
   onViewDetails: () => void,
@@ -14,13 +13,8 @@ type ProductActionsProps = {
 }
 
 export default function ProductActions({ onViewDetails, product, overrideActions }: ProductActionsProps) {
-  const { addToCart, updatedCart, setShouldDisplayCart } = useCart()
-  const [addedToCart, setAddedToCart] = useState(false)
-  useEffect(() => {
-    if (updatedCart) {
-      setAddedToCart(true)
-    }
-  }, [updatedCart])
+  const { addToCart } = useCart()
+  const router = useRouter()
   return (
     <Box
       sx={{
@@ -44,8 +38,7 @@ export default function ProductActions({ onViewDetails, product, overrideActions
           disabled={product.stock === 0 || product.stock === null}
           onClick={() => {
             addToCart({ product: product, quantity: 1 })
-            setAddedToCart(true)
-            setShouldDisplayCart(true)
+            router.push('/carrito')
           }}
         >
           Comprar

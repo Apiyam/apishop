@@ -2,15 +2,27 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ProductItem } from '../lib/wooApi'
+import type { LubellaPack } from '../app/especial/types'
 
 export type CartItem = {
   product: ProductItem
   quantity: number
 }
 
+export type LubellaPackInCart = {
+  pack: LubellaPack
+  selectedLigeroModerado: ProductItem[]
+  selectedModeradoAbundante: ProductItem[]
+}
+
+const LUBELLA_KIT_STORAGE_KEY = 'lubella_kit_cart'
+
 type CartContextType = {
   cartItems: CartItem[]
   totalItems: number
+  lubellaPackInCart: LubellaPackInCart | null
+  setLubellaPackInCart: (data: LubellaPackInCart) => void
+  removeLubellaPackFromCart: () => void
   updatedCart: boolean
   shouldDisplayCart: boolean
   addToCart: (item: CartItem) => void
@@ -27,9 +39,30 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [lubellaPackInCart, setLubellaPackInCartState] = useState<LubellaPackInCart | null>(null)
   const [updatedCart, setUpdatedCart] = useState(false)
   const [totalItems, setTotalItems] = useState(0)
   const [shouldDisplayCart, setShouldDisplayCart] = useState(false)
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(LUBELLA_KIT_STORAGE_KEY)
+      if (raw) setLubellaPackInCartState(JSON.parse(raw))
+    } catch {
+      setLubellaPackInCartState(null)
+    }
+  }, [])
+
+  const setLubellaPackInCart = (data: LubellaPackInCart) => {
+    setLubellaPackInCartState(data)
+    localStorage.setItem(LUBELLA_KIT_STORAGE_KEY, JSON.stringify(data))
+  }
+
+  const removeLubellaPackFromCart = () => {
+    setLubellaPackInCartState(null)
+    localStorage.removeItem(LUBELLA_KIT_STORAGE_KEY)
+  }
+
   const getLocalCart = () => {
     const cart = localStorage.getItem('lubella_cart')
     return cart ? JSON.parse(cart) : []
@@ -78,12 +111,13 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const clearCart = () => {
     setCartItems([])
     setTotalItems(0)
+    removeLubellaPackFromCart()
     localStorage.removeItem('lubella_cart')
   }
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, totalItems, updateQuantity, removeFromCart, clearCart, searchItem, updatedCart, shouldDisplayCart, setShouldDisplayCart }}
+      value={{ cartItems, addToCart, totalItems, updateQuantity, removeFromCart, clearCart, searchItem, updatedCart, shouldDisplayCart, setShouldDisplayCart, lubellaPackInCart, setLubellaPackInCart, removeLubellaPackFromCart }}
     >
       {children}
     </CartContext.Provider>

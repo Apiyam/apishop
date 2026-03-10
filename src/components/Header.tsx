@@ -25,9 +25,9 @@ import CloseIcon from '@mui/icons-material/Close'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 
-import CartModal from './CartModal'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useCart } from '../context/CartContext'
+import NextLink from 'next/link'
 
 
 const products = [
@@ -103,19 +103,10 @@ const products = [
 ]
 
 export default function Header() {
-  const [openCart, setOpenCart] = useState(false)
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [expandProducts, setExpandProducts] = useState(false)
-  const { totalItems, shouldDisplayCart, setShouldDisplayCart } = useCart()
-
-  useEffect(() => {
-    if (shouldDisplayCart) {
-      setOpenCart(true)
-      setTimeout(() => {
-        setShouldDisplayCart(false)
-      }, 1000)
-    }
-  }, [shouldDisplayCart])
+  const { totalItems, lubellaPackInCart } = useCart()
+  const cartCount = totalItems + (lubellaPackInCart ? 1 : 0)
 
   return (
     <>
@@ -177,19 +168,19 @@ export default function Header() {
             </Box>
 
             {/* Carrito */}
-            <IconButton
-              size="sm"
-              variant="plain"
-              sx={{ color: 'white' }}
-              onClick={() => setOpenCart(true)}
+            <Link
+              component={NextLink}
+              href="/carrito"
+              underline="none"
+              sx={{ display: 'flex', alignItems: 'center', color: 'white' }}
             >
               <Typography level="body-lg" sx={{ color: 'white', marginRight: '10px' }}>
                 Ver carrito
               </Typography>
-              <Badge badgeContent={(totalItems > 10 ? "+9" : totalItems)} color="danger">
+              <Badge badgeContent={cartCount > 10 ? '+9' : cartCount} color="danger">
                 <ShoppingCartIcon />
               </Badge>
-            </IconButton>
+            </Link>
           </Box>
         </Container>
       </Sheet>
@@ -246,8 +237,6 @@ export default function Header() {
           )}
         </List>
       </Sheet>
-
-      <CartModal open={openCart} onClose={() => setOpenCart(false)} />
     </>
   )
 }
