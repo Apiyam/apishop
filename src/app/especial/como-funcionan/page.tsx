@@ -33,7 +33,7 @@ export default function EspecialComoFuncionanPage() {
             ¿Cómo funcionan los kits especial?
           </Typography>
           <Typography
-            level="body1"
+            level="body-sm"
             sx={{
               color: '#444',
               mb: 3,
@@ -47,25 +47,25 @@ export default function EspecialComoFuncionanPage() {
           <Stack spacing={2.5} component="ol" sx={{ pl: 2.5, listStyle: 'none', counterReset: 'step' }}>
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
               <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Elige tu kit</Typography>
-              <Typography level="body2" sx={{ color: '#555', lineHeight: 1.7 }}>
+              <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
                 Kit Flujo Regular (3 Ligero/Moderado + 2 Moderado/Abundante + 1 detergente) o Kit Flujo Abundante (1 + 4 + 1 detergente). 15% Expo.
               </Typography>
             </Box>
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
               <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Ligero / Moderado</Typography>
-              <Typography level="body2" sx={{ color: '#555', lineHeight: 1.7 }}>
+              <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
                 Selecciona los calzones en esta categoría. Tiro Alto o Tiro Bikini.
               </Typography>
             </Box>
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
               <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Moderado / Abundante</Typography>
-              <Typography level="body2" sx={{ color: '#555', lineHeight: 1.7 }}>
+              <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
                 Elige tus calzones. Tiro Alto o Tiro Bikini.
               </Typography>
             </Box>
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
               <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Resumen y pago</Typography>
-              <Typography level="body2" sx={{ color: '#555', lineHeight: 1.7 }}>
+              <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
                 Revisa tu kit (incluye 1 detergente). «Ir a pagar» lo agrega al carrito al precio del kit.
               </Typography>
             </Box>

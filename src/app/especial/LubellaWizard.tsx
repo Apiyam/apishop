@@ -245,7 +245,7 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
 
       return (
         <Box sx={{ px: 1 }}>
-          <Typography level="body2" color="neutral" sx={{ mb: 1 }}>
+          <Typography level="body-sm" color="neutral" sx={{ mb: 1 }}>
             Ligero / Moderado ({selectedLigeroModerado.length})
           </Typography>
           <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', gap: 1, mb: 2 }}>
@@ -258,7 +258,7 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
               </Box>
             ))}
           </Stack>
-          <Typography level="body2" color="neutral" sx={{ mb: 1 }}>
+          <Typography level="body-sm" color="neutral" sx={{ mb: 1 }}>
             Moderado / Abundante ({selectedModeradoAbundante.length})
           </Typography>
           <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', gap: 1, mb: 2 }}>
@@ -271,7 +271,7 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
               </Box>
             ))}
           </Stack>
-          <Typography level="body2" color="neutral" sx={{ mb: 2 }}>1 detergente incluido</Typography>
+          <Typography level="body-sm" color="neutral" sx={{ mb: 2 }}>1 detergente incluido</Typography>
           <Typography level="h4" sx={{ fontWeight: 700, color: accent }}>
             Precio del kit: ${pack.priceDiscounted.toLocaleString('es-MX')}
           </Typography>
@@ -302,13 +302,13 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
               <Card key={p.id} variant="outlined" sx={{ borderRadius: 'md', border: selected ? `3px solid ${accent}` : undefined, opacity: disabled ? 0.7 : 1 }}>
                 <Box component="img" src={p.images || IMG_PLACEHOLDER} alt={p.name} sx={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: 'md' }} />
                 <Box sx={{ p: 1, textAlign: 'center', minWidth: 0 }}>
-                  <Typography level="body2" sx={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: 36, fontSize: '0.8rem' }} title={p.name}>{getDisplayName(p)}</Typography>
+                  <Typography level="body-sm" sx={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: 36, fontSize: '0.8rem' }} title={p.name}>{getDisplayName(p)}</Typography>
                   <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5} sx={{ mt: 0.75 }} useFlexGap flexWrap="nowrap">
                     <IconButton size="sm" onClick={(e) => removeLigeroModerado(p, e)} disabled={!canRemove} sx={{ minWidth: 32, width: 32, height: 32, '--IconButton-size': '32px', border: '1.5px solid', borderColor: canRemove ? accent : 'neutral.outlinedBorder', color: canRemove ? accent : 'neutral', bgcolor: canRemove ? `${accent}20` : 'transparent' }}><RemoveIcon sx={{ fontSize: 18 }} /></IconButton>
-                    <Typography level="body2" sx={{ minWidth: 22, textAlign: 'center', fontWeight: 700, color: selected ? accent : 'neutral', fontSize: '0.9rem' }}>{countThis}</Typography>
+                    <Typography level="body-sm" sx={{ minWidth: 22, textAlign: 'center', fontWeight: 700, color: selected ? accent : 'neutral', fontSize: '0.9rem' }}>{countThis}</Typography>
                     <IconButton size="sm" onClick={(e) => addLigeroModerado(p, e)} disabled={!canAdd} sx={{ minWidth: 32, width: 32, height: 32, '--IconButton-size': '32px', border: '1.5px solid', borderColor: canAdd ? accent : 'neutral.outlinedBorder', color: canAdd ? accent : 'neutral', bgcolor: canAdd ? `${accent}20` : 'transparent' }}><AddIcon sx={{ fontSize: 18 }} /></IconButton>
                   </Stack>
-                  <Typography level="body3" color="neutral" sx={{ display: 'block', mt: 0.25, fontSize: '0.7rem' }}>{selectedLigeroModerado.length}/{pack.ligeroModerado}</Typography>
+                  <Typography level="body-sm" color="neutral" sx={{ display: 'block', mt: 0.25, fontSize: '0.7rem' }}>{selectedLigeroModerado.length}/{pack.ligeroModerado}</Typography>
                 </Box>
               </Card>
             )
@@ -331,13 +331,13 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
               <Card key={p.id} variant="outlined" sx={{ borderRadius: 'md', border: selected ? `3px solid ${accent}` : undefined, opacity: disabled ? 0.7 : 1 }}>
                 <Box component="img" src={p.images || IMG_PLACEHOLDER} alt={p.name} sx={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: 'md' }} />
                 <Box sx={{ p: 1, textAlign: 'center', minWidth: 0 }}>
-                  <Typography level="body2" sx={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: 36, fontSize: '0.8rem' }} title={p.name}>{getDisplayName(p)}</Typography>
+                  <Typography level="body-sm" sx={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: 36, fontSize: '0.8rem' }} title={p.name}>{getDisplayName(p)}</Typography>
                   <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5} sx={{ mt: 0.75 }} useFlexGap flexWrap="nowrap">
                     <IconButton size="sm" onClick={(e) => removeModeradoAbundante(p, e)} disabled={!canRemove} sx={{ minWidth: 32, width: 32, height: 32, '--IconButton-size': '32px', border: '1.5px solid', borderColor: canRemove ? accent : 'neutral.outlinedBorder', color: canRemove ? accent : 'neutral', bgcolor: canRemove ? `${accent}20` : 'transparent' }}><RemoveIcon sx={{ fontSize: 18 }} /></IconButton>
-                    <Typography level="body2" sx={{ minWidth: 22, textAlign: 'center', fontWeight: 700, color: selected ? accent : 'neutral', fontSize: '0.9rem' }}>{countThis}</Typography>
+                    <Typography level="body-sm" sx={{ minWidth: 22, textAlign: 'center', fontWeight: 700, color: selected ? accent : 'neutral', fontSize: '0.9rem' }}>{countThis}</Typography>
                     <IconButton size="sm" onClick={(e) => addModeradoAbundante(p, e)} disabled={!canAdd} sx={{ minWidth: 32, width: 32, height: 32, '--IconButton-size': '32px', border: '1.5px solid', borderColor: canAdd ? accent : 'neutral.outlinedBorder', color: canAdd ? accent : 'neutral', bgcolor: canAdd ? `${accent}20` : 'transparent' }}><AddIcon sx={{ fontSize: 18 }} /></IconButton>
                   </Stack>
-                  <Typography level="body3" color="neutral" sx={{ display: 'block', mt: 0.25, fontSize: '0.7rem' }}>{selectedModeradoAbundante.length}/{pack.moderadoAbundante}</Typography>
+                  <Typography level="body-sm" color="neutral" sx={{ display: 'block', mt: 0.25, fontSize: '0.7rem' }}>{selectedModeradoAbundante.length}/{pack.moderadoAbundante}</Typography>
                 </Box>
               </Card>
             )
