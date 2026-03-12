@@ -27,14 +27,16 @@ export default function EspecialPage() {
 
   return (
     <Box sx={{ bgcolor: '#F8F8F8', minHeight: '100vh', color: '#333', pb: { xs: 6, sm: 0 } }}>
-      <Box sx={{ bgcolor: '#FCE4EC', py: 5, textAlign: 'center' }}>
+      <Box sx={{ bgcolor: '#FCE4EC', py: 1, textAlign: 'center' }}>
         <Container>
+        <img src="/imgs/expo.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '600px', margin: '0 auto' }} />
           <Typography level="h4" sx={{ fontWeight: 600, color: LUBELLA_ROSE }}>
-            LUBELLA — Kit Expo 2026
+            LUBELLA — Expo Nacional 2026
           </Typography>
           <Typography sx={{ fontWeight: 400, color: '#444', mt: 2 }}>
-            Elige tu kit según tu flujo. Incluye calzones (Tiro Alto o Tiro Bikini) y detergente
-          </Typography>
+            Elige tu kit según tu flujo. Incluye calzones y detergente
+          </Typography> 
+        
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Button
               component={Link}
@@ -69,7 +71,7 @@ export default function EspecialPage() {
               `${pack.ligeroModerado} Ligero / Moderado`,
               `${pack.moderadoAbundante} Moderado / Abundante`,
               '1 Detergente',
-              'Tiro Alto o Tiro Bikini',
+              '',
             ].join(' · ')
             return (
               <Box key={pack.id}>

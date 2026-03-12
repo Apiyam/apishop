@@ -28,7 +28,7 @@ const LUBELLA_PINK = '#e91e8c'
 const LUBELLA_PINK_HOVER = '#c41a75'
 const LUBELLA_ROSE = '#d81b60'
 const LUBELLA_ROSE_HOVER = '#ad1649'
-const IMG_PLACEHOLDER = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU34ZGC6H9BGPDorU8aNG2P8ark14cj0DqOA&'
+const IMG_PLACEHOLDER = '/imgs/calzon.png'
 
 function getDisplayName(p: ProductItem): string {
   const n = (p.name || '').trim()

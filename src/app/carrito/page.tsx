@@ -23,7 +23,7 @@ import QuantitySelector from '@/components/QuantitySelector'
 import { useCart } from '@/context/CartContext'
 import { CategoryItem, getCategories, ProductItem } from '@/lib/wooApi'
 import ConfirmationModal from '@/components/ConfirmationModal'
-import { LUBELLA_DETERGENT } from '@/app/especial/types'
+import { LUBELLA_DETERGENT } from '@/app/expo-nacional/types'
 import Link from 'next/link'
 
 // Colores apishop / Lubella

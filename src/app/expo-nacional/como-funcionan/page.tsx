@@ -41,7 +41,7 @@ export default function EspecialComoFuncionanPage() {
               lineHeight: 1.6,
             }}
           >
-            Elige tu kit según tu flujo, selecciona tus calzones (Tiro Alto o Tiro Bikini) y listo. 15% Expo.
+            Elige tu kit según tu flujo, selecciona tus calzones y listo. 15% Expo.
           </Typography>
 
           <Stack spacing={2.5} component="ol" sx={{ pl: 2.5, listStyle: 'none', counterReset: 'step' }}>
@@ -54,13 +54,13 @@ export default function EspecialComoFuncionanPage() {
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
               <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Ligero / Moderado</Typography>
               <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
-                Selecciona los calzones en esta categoría. Tiro Alto o Tiro Bikini.
+                Selecciona los calzones en esta categoría.
               </Typography>
             </Box>
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
               <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Moderado / Abundante</Typography>
               <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
-                Elige tus calzones. Tiro Alto o Tiro Bikini.
+                Elige tus calzones.
               </Typography>
             </Box>
             <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
