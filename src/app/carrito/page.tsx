@@ -59,11 +59,40 @@ export default function CarritoPage() {
 
   const goToWordpress = () => {
     setGoingToWordpress(true)
-    const data = encodeURIComponent(JSON.stringify(cartItems.map(i => ({ id: i.product.id, quantity: i.quantity }))))
+
+    type ItemPayload = { id: number; quantity: number; kit?: boolean }
+    const items: ItemPayload[] = []
+
+    if (lubellaPackInCart) {
+      const { selectedLigeroModerado, selectedModeradoAbundante, pack } = lubellaPackInCart
+      const byId = (arr: { id: number }[]) =>
+        arr.reduce<Record<number, number>>((acc, p) => {
+          acc[p.id] = (acc[p.id] ?? 0) + 1
+          return acc
+        }, {})
+      const lmQty = byId(selectedLigeroModerado)
+      const maQty = byId(selectedModeradoAbundante)
+      Object.entries(lmQty).forEach(([id, qty]) => {
+        items.push({ id: Number(id), quantity: qty, kit: true })
+      })
+      Object.entries(maQty).forEach(([id, qty]) => {
+        items.push({ id: Number(id), quantity: qty, kit: true })
+      })
+      items.push({ id: LUBELLA_DETERGENT.id, quantity: 1, kit: true })
+    }
+
+    cartItems.forEach((i) => {
+      items.push({ id: i.product.id, quantity: i.quantity })
+    })
+
+    const data = encodeURIComponent(JSON.stringify(items))
     const base = `https://ecopipo.com/matriz/?items=${data}`
     const url = lubellaPackInCart
-      ? `${base}&withLubellaPackage=true&lubellaDetergentId=${LUBELLA_DETERGENT.id}`
+      ? `${base}&kitTotal=${lubellaPackInCart.pack.priceDiscounted}`
       : base
+    //console.log(url)
+    //console.log(data)
+    //console.log(base)
     window.location.href = url
   }
 
