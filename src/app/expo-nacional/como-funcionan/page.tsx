@@ -76,7 +76,7 @@ export default function EspecialComoFuncionanPage() {
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Button
               component={Link}
-              href="/especial#kits-lubella"
+              href="/expo-nacional#kits-lubella"
               variant="solid"
               sx={{
                 bgcolor: LUBELLA_PINK,

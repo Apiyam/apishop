@@ -40,7 +40,7 @@ export default function EspecialPage() {
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Button
               component={Link}
-              href="/especial/como-funcionan"
+              href="/expo-nacional/como-funcionan"
               variant="outlined"
               size="md"
               sx={{

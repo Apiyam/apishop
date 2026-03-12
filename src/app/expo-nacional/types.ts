@@ -14,7 +14,7 @@ export type LubellaPack = {
 
 export const LUBELLA_PACKS: LubellaPack[] = [
   {
-    image: '/imgs/expo1.jpeg',
+    image: '/imgs/expo2.jpeg',
     id: 'regular',  
     name: 'Kit Flujo Regular',
     ligeroModerado: 3,
@@ -25,7 +25,7 @@ export const LUBELLA_PACKS: LubellaPack[] = [
     color: 'pink',
   },
   {
-    image: '/imgs/expo2.jpeg',
+    image: '/imgs/expo1.jpeg',
     id: 'abundante',
     name: 'Kit Flujo Abundante',
     ligeroModerado: 1,

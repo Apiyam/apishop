@@ -60,6 +60,12 @@ function excludeTiroAlto(p: ProductItem): boolean {
   return !text.includes('tiro alto')
 }
 
+/** Excluye talla 12/14; no aplican en la selección del wizard. */
+function excludeTalla1214(p: ProductItem): boolean {
+  const text = ((p.name || '') + ' ' + (p.categories || '')).toLowerCase()
+  return !text.includes('12/14') && !text.includes('12-14')
+}
+
 type LubellaWizardProps = {
   pack: LubellaPack
   open: boolean
@@ -85,10 +91,12 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
   const ligeroModeradoList = products
     .filter(filterByKeyword('ligero|ligero moderado|moderado', 'abundante'))
     .filter(excludeNude)
+    .filter(excludeTalla1214)
   const moderadoAbundanteList = products
     .filter(filterByKeyword('abundante|moderado abundante'))
     .filter(excludeNude)
     .filter(excludeTiroAlto)
+    .filter(excludeTalla1214)
 
   const saveSelection = useCallback(() => {
     try {
