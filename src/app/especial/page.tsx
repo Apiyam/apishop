@@ -85,17 +85,9 @@ export default function EspecialPage() {
                 >
                   <Box
                     component="img"
-                    src={`/imgs/lubella-${pack.id}.jpg`}
+                    src={pack.image}
                     alt={pack.name}
-                    onError={(e) => {
-                      const t = e.target as HTMLImageElement
-                      t.src = `data:image/svg+xml,${encodeURIComponent(
-                        '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="240" viewBox="0 0 400 240"><rect fill="#FCE4EC" width="400" height="240"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#d81b60" font-family="sans-serif" font-size="18">' +
-                          pack.name +
-                          '</text></svg>'
-                      )}`
-                    }}
-                    sx={{ width: '100%', height: 200, objectFit: 'cover', bgcolor: '#FCE4EC' }}
+                    sx={{ width: '100%', height: 400, objectFit: 'cover', bgcolor: '#FCE4EC' }}
                   />
                   <CardContent>
                     <Typography level="h4" sx={{ fontWeight: 700, color: accent }}>

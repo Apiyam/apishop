@@ -66,6 +66,7 @@ export default function ProductsRow() {
             return (
               <Box
                 key={index}
+                id={`section-${product.slug}`}
                 sx={{
                   display: 'grid',
                   gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },

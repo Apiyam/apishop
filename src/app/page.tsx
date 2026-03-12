@@ -21,9 +21,13 @@ export default function HomePage() {
     <Box>
       {/* Hero section */}
       <HeroMain />
-      <BenefitCards />
+      <Box id="section-calzon-menstruals" component="section">
+        <BenefitCards />
+      </Box>
       
       <Box
+        id="section-toallas"
+        component="section"
         sx={{
           backgroundColor: '#7CBB48',
           color: 'white',

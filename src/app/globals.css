@@ -97,6 +97,7 @@ p, h4, h3, h5, h6, button{
   display: flex;
   margin-left: -16px; /* gutter size */
   width: auto;
+  justify-content: center;
 }
 .my-masonry-grid_column {
   padding-left: 16px; /* gutter size */

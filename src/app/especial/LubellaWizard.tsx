@@ -48,6 +48,18 @@ function filterByKeyword(keyword: string, exclude?: string) {
   }
 }
 
+/** Excluye solo productos que digan "nude". Tiro Alto y Tiro Bikini sí aplican. */
+function excludeNude(p: ProductItem): boolean {
+  const text = ((p.name || '') + ' ' + (p.categories || '')).toLowerCase()
+  return !/\bnude(s)?\b/.test(text)
+}
+
+/** Excluye productos que digan "tiro alto". */
+function excludeTiroAlto(p: ProductItem): boolean {
+  const text = ((p.name || '') + ' ' + (p.categories || '')).toLowerCase()
+  return !text.includes('tiro alto')
+}
+
 type LubellaWizardProps = {
   pack: LubellaPack
   open: boolean
@@ -70,8 +82,13 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
 
   const stepLabels: string[] = ['Ligero / Moderado', 'Moderado / Abundante', 'Resumen']
 
-  const ligeroModeradoList = products.filter(filterByKeyword('ligero|ligero moderado|moderado', 'abundante'))
-  const moderadoAbundanteList = products.filter(filterByKeyword('abundante|moderado abundante'))
+  const ligeroModeradoList = products
+    .filter(filterByKeyword('ligero|ligero moderado|moderado', 'abundante'))
+    .filter(excludeNude)
+  const moderadoAbundanteList = products
+    .filter(filterByKeyword('abundante|moderado abundante'))
+    .filter(excludeNude)
+    .filter(excludeTiroAlto)
 
   const saveSelection = useCallback(() => {
     try {
@@ -102,6 +119,8 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
           const saved = sessionStorage.getItem(LUBELLA_PACK_SELECTION_STORAGE_KEY(pack.id))
           if (saved) {
             const { ligeroModerado, moderadoAbundante } = JSON.parse(saved)
+            console.log('ligeroModerado', ligeroModerado)
+            console.log('moderadoAbundante', moderadoAbundante)
             const byId = new Map(data.map((p) => [p.id, p]))
             const getProduct = (id: number | string) => byId.get(Number(id)) ?? byId.get(id as number)
             if (Array.isArray(ligeroModerado)) {
@@ -110,6 +129,7 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
             }
             if (Array.isArray(moderadoAbundante)) {
               const rest = moderadoAbundante.map((id) => getProduct(id)).filter(Boolean) as ProductItem[]
+             
               if (rest.length <= pack.moderadoAbundante) setSelectedModeradoAbundante(rest)
             }
           }
@@ -290,7 +310,7 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
 
     if (step === 0) {
       return (
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2, px: 1 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2, px: 1 }}>
           {ligeroModeradoList.map((p) => {
             const countThis = selectedLigeroModerado.filter((x) => x.id === p.id).length
             const selected = countThis > 0
@@ -319,7 +339,7 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
 
     if (step === 1) {
       return (
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2, px: 1 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2, px: 1 }}>
           {moderadoAbundanteList.map((p) => {
             const countThis = selectedModeradoAbundante.filter((x) => x.id === p.id).length
             const selected = countThis > 0

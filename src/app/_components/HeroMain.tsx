@@ -2,17 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
-import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import slide1 from '../../../public/imgs/slide1.jpg';
-import slide2 from '../../../public/imgs/slide2.jpg';
-import slide3 from '../../../public/imgs/slide3.jpg';
-import slide4 from '../../../public/imgs/slide4.jpg';
-import slide5 from '../../../public/imgs/slide5.jpg';
-import slide6 from '../../../public/imgs/slide6.jpg';
 import { Link, Modal, Sheet } from '@mui/joy';
 import Masonry from 'react-masonry-css'
-const images = [slide1, slide5, slide4]
 
 const breakpointColumnsObj = {
   default: 3,
@@ -131,7 +123,6 @@ export default function HeroMain() {
 
   // Parallax background y movimiento
   const y1 = useTransform(scrollY, [0, 300], [0, -30]);
-  const y2 = useTransform(scrollY, [0, 300], [0, -60]);
 
   // Valor scroll actual para pasarlo al canvas
   const [scrollYValue, setScrollYValue] = React.useState(0);
@@ -164,7 +155,6 @@ export default function HeroMain() {
       <Container
         maxWidth="md"
         sx={{
-          pt: { xs: 10, md: 16 },
           pb: { xs: 10, md: 12 },
           textAlign: 'center',
           position: 'relative',
@@ -260,30 +250,54 @@ export default function HeroMain() {
         )}
 
         {/* Imagen con parallax */}
-        <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {images.map((img, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            viewport={{ once: true }}
-            style={{ marginBottom: '1rem', borderRadius: 12, overflow: 'hidden' }}
+        <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
           >
-            <Image
-              src={img}
-              alt={`Lubella slide ${i}`}
-              layout="responsive"
-              loading="lazy"
-              placeholder="blur"
-            />
-          </motion.div>
-        ))}
-      </Masonry>
+            <motion.div
+              key="menstrual"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              style={{ marginBottom: '1rem', borderRadius: 12, overflow: 'hidden', breakInside: 'avoid', cursor: 'pointer' }}
+              onClick={() => document.getElementById('section-calzon-menstrual')?.scrollIntoView({ behavior: 'smooth' })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && document.getElementById('section-calzon-menstrual')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <img
+                src="/imgs/menstrual.png"
+                width="100%"
+                alt="Calzón menstrual Lubella - Ir a sección"
+                loading="lazy"
+                style={{ display: 'block', width: '100%', height: 'auto' }}
+              />
+            </motion.div>
+            <motion.div
+              key="toalla"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              style={{ marginBottom: '1rem', borderRadius: 12, overflow: 'hidden', breakInside: 'avoid', cursor: 'pointer' }}
+              onClick={() => document.getElementById('section-toalla-femenina-regular')?.scrollIntoView({ behavior: 'smooth' })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && document.getElementById('section-toalla-femenina-regular')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <img
+                src="/imgs/toalla.png"
+                width="100%"
+                alt="Toallas Lubella - Ir a sección"
+                loading="lazy"
+                style={{ display: 'block', width: '100%', height: 'auto' }}
+              />
+            </motion.div>
+          </Masonry>
+        </Box>
       </Container>
       
 
