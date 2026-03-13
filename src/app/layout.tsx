@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lubella – Bienestar íntimo consciente",
     description: "Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más",
-    images: `${domain}/imgs/lubella-productos.JPG`,
+    images: `${domain}/imgs/expo.jpg`,
     url: domain,
     siteName: "Lubella",
     locale: "es_MX",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lubella – Bienestar íntimo consciente",
     description: "Productos Lubella para mujer, pañoletas, toallas femeninas, nocturnas, calzones menstruales y más",
-    images: `${domain}/imgs/lubella-productos.JPG`,
+    images: `${domain}/imgs/expo.jpg`,
   },
 };
 

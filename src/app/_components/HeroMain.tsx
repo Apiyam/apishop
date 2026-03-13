@@ -133,6 +133,14 @@ export default function HeroMain() {
 
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden', pb: 20 }}>
+      
+      <center>
+          <a href="/expo-nacional">
+            <img src="/imgs/expo.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
+          </a>
+        </center>
+      
+          
       {/* Fondo con parallax */}
       <motion.div
         style={{
@@ -167,9 +175,7 @@ export default function HeroMain() {
           transition={{ duration: 0.8 }}
         >
           <img src="/imgs/logo.png" alt="Lubella" width={320} />
-          <Typography variant="h2" fontWeight="bold" gutterBottom color="#d81b60">
-            Conoce Lubella
-          </Typography>
+
           {
             
             <Box>

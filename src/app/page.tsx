@@ -20,6 +20,7 @@ export default function HomePage() {
     <>
     <Box>
       {/* Hero section */}
+      
       <HeroMain />
       <Box id="section-calzon-menstruals" component="section">
         <BenefitCards />

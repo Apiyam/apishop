@@ -300,6 +300,8 @@ export default function LubellaWizard({ pack, open, onClose, onComplete }: Lubel
             ))}
           </Stack>
           <Typography level="body-sm" color="neutral" sx={{ mb: 2 }}>1 detergente incluido</Typography>
+          <Box component="img" src="https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_DetergenteToallas.jpeg" alt="Detergente" sx={{ width: 56, height: 56, borderRadius: 'md', objectFit: 'cover' }} />
+          
           <Typography level="h4" sx={{ fontWeight: 700, color: accent }}>
             Precio del kit: ${pack.priceDiscounted.toLocaleString('es-MX')}
           </Typography>
