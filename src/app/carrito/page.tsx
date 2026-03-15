@@ -380,6 +380,9 @@ export default function CarritoPage() {
               <Typography level="body-sm" sx={{ color: 'neutral.600', fontStyle: 'italic', textAlign: 'center' }}>
                 *Precios de envío y descuentos adicionales se calculan en el siguiente paso.
               </Typography>
+              <Typography level="body-sm" sx={{ color: 'neutral.600', fontStyle: 'italic', textAlign: 'center' }}>
+                Envío de kits preventa a partir del 30 de marzo. Compra hoy y sé de las primeras en recibir.
+              </Typography>
             </Stack>
           )}
           <ConfirmationModal

@@ -29,12 +29,12 @@ export default function EspecialPage() {
     <Box sx={{ bgcolor: '#F8F8F8', minHeight: '100vh', color: '#333', pb: { xs: 6, sm: 0 } }}>
       <Box sx={{ bgcolor: '#FCE4EC', py: 1, textAlign: 'center' }}>
         <Container>
-        <img src="/imgs/expo.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '600px', margin: '0 auto' }} />
+        <img src="/imgs/expos.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '600px', margin: '0 auto' }} />
           <Typography level="h4" sx={{ fontWeight: 600, color: LUBELLA_ROSE }}>
             LUBELLA — Expo Nacional 2026
           </Typography>
-          <Typography sx={{ fontWeight: 400, color: '#444', mt: 2 }}>
-            Elige tu kit según tu flujo. Incluye calzones y detergente
+          <Typography level="body-sm" sx={{ fontWeight: 400, color: '#444', mt: 2 }}>
+          Eligue tu kit según tu flujo. Incluye calzones y detergente. Envío de kits preventa en promoción a partir del 30 de marzo. Compra hoy y sé de las primeras en recibir.
           </Typography> 
         
           <Box sx={{ textAlign: 'center', mt: 2 }}>

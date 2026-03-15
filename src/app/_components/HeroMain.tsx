@@ -136,7 +136,7 @@ export default function HeroMain() {
       
       <center>
           <a href="/expo-nacional">
-            <img src="/imgs/expo.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
+            <img src="/imgs/expos.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
           </a>
         </center>
       

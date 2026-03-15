@@ -69,6 +69,13 @@ export default function EspecialComoFuncionanPage() {
                 Revisa tu kit (incluye 1 detergente). «Ir a pagar» lo agrega al carrito al precio del kit.
               </Typography>
             </Box>
+            <Box component="li" sx={{ '&::before': { counterIncrement: 'step', content: 'counter(step) ".- "', fontWeight: 700, color: LUBELLA_ROSE } }}>
+              <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>Promoción preventa</Typography>
+              <Typography level="body-sm" sx={{ color: '#555', lineHeight: 1.7 }}>
+              Envío de kits a partir del 30 de marzo. Compra hoy y sé de las primeras en recibir.
+              </Typography>
+            </Box>
+            
           </Stack>
 
           <Divider sx={{ my: 3, borderColor: LUBELLA_ROSE, opacity: 0.5 }} />
