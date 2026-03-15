@@ -29,7 +29,7 @@ export default function EspecialPage() {
     <Box sx={{ bgcolor: '#F8F8F8', minHeight: '100vh', color: '#333', pb: { xs: 6, sm: 0 } }}>
       <Box sx={{ bgcolor: '#FCE4EC', py: 1, textAlign: 'center' }}>
         <Container>
-        <img src="/imgs/expos.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '600px', margin: '0 auto' }} />
+        <img src="/imgs/expos.png" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '600px', margin: '0 auto' }} />
           <Typography level="h4" sx={{ fontWeight: 600, color: LUBELLA_ROSE }}>
             LUBELLA — Expo Nacional 2026
           </Typography>
