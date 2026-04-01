@@ -60,15 +60,6 @@ export default function HomePage() {
                 ¿Quieres saber más?
               </Button>
             </Link>
-            <Link href="/especial" underline="none">
-              <Button
-                variant="outlined"
-                size="large"
-                sx={{ borderColor: '#f50086', color: '#f50086', fontWeight: 'bold', width: { xs: '100%', sm: 'auto' } }}
-              >
-                Kits especial
-              </Button>
-            </Link>
           </Box>
         </Container>
       </Box>

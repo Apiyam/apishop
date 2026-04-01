@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import {
     Container,
     Typography,
@@ -39,6 +40,8 @@ interface MainViewProps {
 }
 
 export default function MainView({ selectedProduct }: MainViewProps) {
+    const router = useRouter()
+    const pathname = usePathname()
     const { products, loaded } = useProducts()
     const [filteredProducts, setFilteredProducts] = useState<ProductItem[]>()
     const [categories, setCategories] = useState<CategoryItem[]>()
@@ -58,12 +61,21 @@ export default function MainView({ selectedProduct }: MainViewProps) {
 
 
     useEffect(() => {
-        if (categories && products && selectedProduct) {
-            setSelectedCategory(categories.find((category) => category.slug == selectedProduct) || categories[0])
-        } else {
-            setSelectedCategory(categories?.[0] || null)
+        if (!categories || !products) return
+        const base = (pathname ?? '').replace(/\/$/, '') || ''
+        if (base === '/tienda') {
+            setSelectedCategory(null)
+            return
         }
-    }, [categories, products, selectedProduct])
+        if (selectedProduct) {
+            const found = categories.find((category) => category.slug === selectedProduct)
+            setSelectedCategory(found ?? categories[0] ?? null)
+        }
+    }, [categories, products, selectedProduct, pathname])
+
+    useEffect(() => {
+        setSelectedEstampados([])
+    }, [selectedProduct])
 
     useEffect(() => {
         if (products) {
@@ -105,10 +117,12 @@ export default function MainView({ selectedProduct }: MainViewProps) {
 
     return (
         <Container>
-            <CategoryGrid categories={categories} onCategoryChange={(category) => {
-                setSelectedCategory(category)
-                setSelectedEstampados([])
-            }} />
+            <CategoryGrid
+                categories={categories}
+                onCategoryChange={(category) => {
+                    router.push(`/tienda/${category.slug}`)
+                }}
+            />
             <Typography level="h3" sx={{ mt: 2, textAlign: 'center', color: '#e8416c' }}>Productos {selectedCategory?.name && `- ${selectedCategory?.name}`}</Typography>
             {
                 selectedCategory?.slug == "calzon-menstrual" && (
@@ -134,17 +148,23 @@ export default function MainView({ selectedProduct }: MainViewProps) {
                                 Categorías
                             </Typography>
                             <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                                <Checkbox label="Todas" checked={selectedCategory === null} onChange={() => {
-                                    setSelectedCategory(null)
-                                    setSelectedEstampados([])
-                                }} />
+                                <Checkbox
+                                    label="Todas"
+                                    checked={selectedCategory === null}
+                                    onChange={() => {
+                                        router.push('/tienda')
+                                    }}
+                                />
                             </Box>
                             {categories.map((cat) => (
                                 <Box sx={{ display: 'flex', gap: 1, mb: 1 }} key={cat.name}>
-                                    <Checkbox label={cat.name} checked={selectedCategory?.name === cat.name} onChange={() => {
-                                        setSelectedCategory(cat)
-                                        setSelectedEstampados([])
-                                    }} />
+                                    <Checkbox
+                                        label={cat.name}
+                                        checked={selectedCategory?.name === cat.name}
+                                        onChange={() => {
+                                            router.push(`/tienda/${cat.slug}`)
+                                        }}
+                                    />
                                 </Box>
                             ))}
 

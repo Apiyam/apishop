@@ -134,14 +134,18 @@ export default function HeroMain() {
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden', pb: 20 }}>
       
-      <center>
+     
+      
+          
+      {/*
+       <center>
           <a href="/expo-nacional">
             <img src="/imgs/expos.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
           </a>
         </center>
       
-          
-      {/* Fondo con parallax */}
+      
+      Fondo con parallax */}
       <motion.div
         style={{
           y: y1,

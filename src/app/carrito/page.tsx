@@ -13,6 +13,7 @@ import {
   Stack,
 } from '@mui/joy'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   DeleteForever,
   Visibility,
@@ -35,6 +36,7 @@ const CARD_BORDER = '#e0e0e0'
 const DETERGENT_PLACEHOLDER = 'https://placehold.co/96x96/e8e8e8/666?text=Detergente'
 
 export default function CarritoPage() {
+  const router = useRouter()
   const { cartItems, lubellaPackInCart, removeFromCart, removeLubellaPackFromCart, clearCart } = useCart()
   const [categories, setCategories] = useState<CategoryItem[]>([])
   const [clearCartModal, setClearCartModal] = useState(false)
@@ -361,8 +363,8 @@ export default function CarritoPage() {
               <Button
                 fullWidth
                 variant="outlined"
-                component={Link}
-                href="/"
+                type="button"
+                onClick={() => router.back()}
                 startDecorator={<ArrowBack />}
                 sx={{
                   borderColor: BRAND_BLUE,
@@ -371,7 +373,6 @@ export default function CarritoPage() {
                   py: 1.5,
                   borderRadius: '12px',
                   bgcolor: 'white',
-                  textDecoration: 'none',
                   '&:hover': { borderColor: BRAND_BLUE, bgcolor: `${BRAND_BLUE}08` },
                 }}
               >
@@ -379,9 +380,6 @@ export default function CarritoPage() {
               </Button>
               <Typography level="body-sm" sx={{ color: 'neutral.600', fontStyle: 'italic', textAlign: 'center' }}>
                 *Precios de envío y descuentos adicionales se calculan en el siguiente paso.
-              </Typography>
-              <Typography level="body-sm" sx={{ color: 'neutral.600', fontStyle: 'italic', textAlign: 'center' }}>
-                Envío de kits preventa a partir del 30 de marzo. Compra hoy y sé de las primeras en recibir.
               </Typography>
             </Stack>
           )}
