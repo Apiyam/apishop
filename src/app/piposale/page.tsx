@@ -12,7 +12,7 @@ import {
 } from '@mui/joy'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
 import Link from 'next/link'
-import { EXPO_NACIONAL_PACKS, packContentSummary, formatPackPrice } from '@/lib/salePack'
+import { PIPOSALE_PACKS, packContentSummary, formatPackPrice } from '@/lib/salePack'
 import SalePackWizard from '@/components/SalePackWizard'
 import { HealthAndSafety } from '@mui/icons-material'
 import type { SalePack } from '@/lib/salePack'
@@ -25,24 +25,23 @@ const ACCENTS = {
 
 const BRAND_GREEN = '#7CBB48'
 
-export default function ExpoNacionalPage() {
+export default function PiposalePage() {
   const [wizardPack, setWizardPack] = useState<SalePack | null>(null)
 
   return (
     <Box sx={{ bgcolor: '#F8F8F8', minHeight: '100vh', color: '#333', pb: { xs: 6, sm: 0 } }}>
-      <Box sx={{ bgcolor: '#FCE4EC', py: 1, textAlign: 'center' }}>
+      <Box sx={{ bgcolor: '#FCE4EC', py: 3, textAlign: 'center' }}>
         <Container>
-          <img src="/imgs/expos.png" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '600px', margin: '0 auto' }} />
-          <Typography level="h4" sx={{ fontWeight: 600, color: ACCENTS.rose.main }}>
-            LUBELLA — Expo Nacional 2026
+          <Typography level="h3" sx={{ fontWeight: 800, color: ACCENTS.rose.main }}>
+            Packs Lubella 2026
           </Typography>
-          <Typography level="body-sm" sx={{ fontWeight: 400, color: '#444', mt: 2 }}>
-            Elige tu kit según tu flujo. Incluye calzones y detergente. Envío de kits preventa en promoción a partir del 30 de marzo.
+          <Typography level="body-md" sx={{ fontWeight: 500, color: '#444', mt: 1.5, maxWidth: 560, mx: 'auto' }}>
+            Todos con 20% de descuento Lubella. Elige tu pack, selecciona tus toallas y pantiprotectores, y agrega al carrito.
           </Typography>
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Button
               component={Link}
-              href="/expo-nacional/como-funcionan"
+              href="/piposale/como-funcionan"
               variant="outlined"
               size="md"
               sx={{
@@ -53,19 +52,19 @@ export default function ExpoNacionalPage() {
                 '&:hover': { borderColor: ACCENTS.rose.hover, bgcolor: 'rgba(216,27,96,0.06)' },
               }}
             >
-              ¿Cómo funcionan los kits?
+              ¿Cómo funcionan los packs?
             </Button>
           </Box>
         </Container>
       </Box>
 
-      <Container sx={{ py: 4 }} id="kits-lubella">
+      <Container sx={{ py: 4 }} id="packs-piposale">
         <Typography level="h2" textAlign="center" sx={{ mb: 2, color: ACCENTS.rose.main, fontWeight: 800 }}>
-          Escoge tu kit
+          Escoge tu pack
         </Typography>
 
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 4 }}>
-          {EXPO_NACIONAL_PACKS.map((pack) => {
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: 4 }}>
+          {PIPOSALE_PACKS.map((pack) => {
             const accent = ACCENTS[pack.color]
             return (
               <Card
@@ -82,7 +81,7 @@ export default function ExpoNacionalPage() {
                   component="img"
                   src={pack.image}
                   alt={pack.name}
-                  sx={{ width: '100%', height: 400, objectFit: 'cover', bgcolor: '#FCE4EC' }}
+                  sx={{ width: '100%', height: 220, objectFit: 'cover', bgcolor: '#FCE4EC' }}
                 />
                 <CardContent>
                   <Typography level="h4" sx={{ fontWeight: 700, color: accent.main }}>
@@ -94,7 +93,10 @@ export default function ExpoNacionalPage() {
                   <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2, flexWrap: 'wrap' }}>
                     <LocalOfferIcon sx={{ color: BRAND_GREEN }} />
                     <Typography sx={{ color: ACCENTS.rose.main, fontWeight: 600 }}>
-                      ${formatPackPrice(pack.priceOriginal)} → ${formatPackPrice(pack.priceDiscounted)} MXN ({pack.discountPercent}% Expo)
+                      <Box component="span" sx={{ textDecoration: 'line-through', color: 'neutral.600', mr: 1 }}>
+                        ${formatPackPrice(pack.priceOriginal)} MXN
+                      </Box>
+                      ${formatPackPrice(pack.priceDiscounted)} MXN (20% Sale)
                     </Typography>
                   </Stack>
                   <Button
@@ -109,7 +111,7 @@ export default function ExpoNacionalPage() {
                     }}
                     onClick={() => setWizardPack(pack)}
                   >
-                    Elegir kit
+                    Elegir pack
                   </Button>
                 </CardContent>
               </Card>
@@ -118,10 +120,18 @@ export default function ExpoNacionalPage() {
         </Box>
       </Container>
 
-      <Box component="footer" sx={{ bgcolor: '#FCE4EC', py: 6, textAlign: 'center' }}>
+      <Box
+        component="footer"
+        sx={{
+          bgcolor: '#FCE4EC',
+          py: 6,
+          px: 2,
+          textAlign: 'center',
+        }}
+      >
         <Container maxWidth="sm">
           <HealthAndSafety sx={{ color: ACCENTS.pink.main, fontSize: 48, mb: 1.5 }} />
-          <Typography level="h4" sx={{ fontWeight: 600 }}>
+          <Typography level="h4" sx={{ fontWeight: 600, lineHeight: 1.4 }}>
             Cuidado íntimo sustentable para ti
           </Typography>
           <Typography level="body-sm" sx={{ mt: 1.5, color: '#555' }}>
@@ -133,7 +143,7 @@ export default function ExpoNacionalPage() {
       {wizardPack && (
         <SalePackWizard
           pack={wizardPack}
-          campaign="expo-nacional"
+          campaign="piposale"
           open={!!wizardPack}
           onClose={() => setWizardPack(null)}
         />

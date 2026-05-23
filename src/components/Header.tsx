@@ -105,8 +105,8 @@ const products = [
 export default function Header() {
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [expandProducts, setExpandProducts] = useState(false)
-  const { totalItems, lubellaPackInCart } = useCart()
-  const cartCount = totalItems + (lubellaPackInCart ? 1 : 0)
+  const { totalItems, salePackInCart } = useCart()
+  const cartCount = totalItems + (salePackInCart ? 1 : 0)
 
   return (
     <>

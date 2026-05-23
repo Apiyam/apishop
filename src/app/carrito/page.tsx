@@ -24,7 +24,7 @@ import QuantitySelector from '@/components/QuantitySelector'
 import { useCart } from '@/context/CartContext'
 import { CategoryItem, getCategories, ProductItem } from '@/lib/wooApi'
 import ConfirmationModal from '@/components/ConfirmationModal'
-import { LUBELLA_DETERGENT } from '@/app/expo-nacional/types'
+import { SALE_DETERGENT, formatPackPrice } from '@/lib/salePack'
 import Link from 'next/link'
 
 // Colores apishop / Lubella
@@ -37,7 +37,7 @@ const DETERGENT_PLACEHOLDER = 'https://placehold.co/96x96/e8e8e8/666?text=Deterg
 
 export default function CarritoPage() {
   const router = useRouter()
-  const { cartItems, lubellaPackInCart, removeFromCart, removeLubellaPackFromCart, clearCart } = useCart()
+  const { cartItems, salePackInCart, removeFromCart, removeSalePackFromCart, clearCart } = useCart()
   const [categories, setCategories] = useState<CategoryItem[]>([])
   const [clearCartModal, setClearCartModal] = useState(false)
   const [removeLubellaModal, setRemoveLubellaModal] = useState(false)
@@ -55,7 +55,7 @@ export default function CarritoPage() {
 
   const getTotal = () => {
     const itemsTotal = cartItems.reduce((acc, item) => acc + getDiscountedPrice(item.product) * item.quantity, 0)
-    const kitTotal = lubellaPackInCart ? lubellaPackInCart.pack.priceDiscounted : 0
+    const kitTotal = salePackInCart ? salePackInCart.pack.priceDiscounted : 0
     return itemsTotal + kitTotal
   }
 
@@ -65,22 +65,18 @@ export default function CarritoPage() {
     type ItemPayload = { id: number; quantity: number; kit?: boolean }
     const items: ItemPayload[] = []
 
-    if (lubellaPackInCart) {
-      const { selectedLigeroModerado, selectedModeradoAbundante, pack } = lubellaPackInCart
-      const byId = (arr: { id: number }[]) =>
+    if (salePackInCart) {
+      const byId = (arr: ProductItem[]) =>
         arr.reduce<Record<number, number>>((acc, p) => {
           acc[p.id] = (acc[p.id] ?? 0) + 1
           return acc
         }, {})
-      const lmQty = byId(selectedLigeroModerado)
-      const maQty = byId(selectedModeradoAbundante)
-      Object.entries(lmQty).forEach(([id, qty]) => {
-        items.push({ id: Number(id), quantity: qty, kit: true })
+      Object.values(salePackInCart.selections).forEach((lineItems) => {
+        Object.entries(byId(lineItems)).forEach(([id, qty]) => {
+          items.push({ id: Number(id), quantity: qty, kit: true })
+        })
       })
-      Object.entries(maQty).forEach(([id, qty]) => {
-        items.push({ id: Number(id), quantity: qty, kit: true })
-      })
-      items.push({ id: LUBELLA_DETERGENT.id, quantity: 1, kit: true })
+      items.push({ id: SALE_DETERGENT.id, quantity: 1, kit: true })
     }
 
     cartItems.forEach((i) => {
@@ -89,8 +85,8 @@ export default function CarritoPage() {
 
     const data = encodeURIComponent(JSON.stringify(items))
     const base = `https://ecopipo.com/matriz/?items=${data}`
-    const url = lubellaPackInCart
-      ? `${base}&kitTotal=${lubellaPackInCart.pack.priceDiscounted}`
+    const url = salePackInCart
+      ? `${base}&kitTotal=${salePackInCart.pack.priceDiscounted}`
       : base
     //console.log(url)
     //console.log(data)
@@ -98,8 +94,9 @@ export default function CarritoPage() {
     window.location.href = url
   }
 
-  const hasAnything = cartItems.length > 0 || !!lubellaPackInCart
-  const detergentImage = LUBELLA_DETERGENT.image || DETERGENT_PLACEHOLDER
+  const hasAnything = cartItems.length > 0 || !!salePackInCart
+  const detergentImage = SALE_DETERGENT.image || DETERGENT_PLACEHOLDER
+  const packEditHref = salePackInCart?.campaign === 'piposale' ? '/piposale' : '/expo-nacional'
 
   return (
     <Container maxWidth="md" sx={{ py: 3, bgcolor: 'background.body', minHeight: '80vh' }}>
@@ -108,7 +105,7 @@ export default function CarritoPage() {
       </Typography>
 
       {/* Card Kit (Paquete especial) - estilo Ecopipo */}
-      {lubellaPackInCart && (
+      {salePackInCart && (
         <Card
           variant="outlined"
           sx={{
@@ -122,14 +119,14 @@ export default function CarritoPage() {
           <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 1.5, mb: 2 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
               <Typography fontWeight="700" sx={{ color: '#111', fontSize: '1.05rem' }}>
-                {lubellaPackInCart.pack.name}
+                {salePackInCart.pack.name}
               </Typography>
               <Typography level="body-sm" sx={{ color: 'neutral.600', fontSize: '0.85rem' }}>
                 Paquete especial
               </Typography>
             </Box>
             <Typography fontWeight="700" sx={{ color: '#111', fontSize: '1.1rem' }}>
-              {lubellaPackInCart.pack.priceDiscounted.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+              ${formatPackPrice(salePackInCart.pack.priceDiscounted)} MXN
             </Typography>
           </Box>
 
@@ -151,11 +148,11 @@ export default function CarritoPage() {
             <Box
               component="img"
               src={detergentImage}
-              alt={LUBELLA_DETERGENT.name}
+              alt={SALE_DETERGENT.name}
               sx={{ width: 56, height: 56, borderRadius: '8px', objectFit: 'cover' }}
             />
             <Typography level="body-sm" sx={{ color: 'neutral.700' }}>
-              1 {LUBELLA_DETERGENT.name}
+              1 {SALE_DETERGENT.name}
             </Typography>
           </Box>
 
@@ -178,7 +175,7 @@ export default function CarritoPage() {
               size="sm"
               variant="outlined"
               component={Link}
-              href="/especial"
+              href={packEditHref}
               startDecorator={<Edit />}
               sx={{
                 borderColor: BRAND_BLUE,
@@ -208,10 +205,10 @@ export default function CarritoPage() {
           <ConfirmationModal
             open={removeLubellaModal}
             title="¿Quitar kit?"
-            message="El kit se quitará del carrito. Podrás volver a elegirlo desde la página Especial."
+            message="El pack se quitará del carrito. Podrás volver a elegirlo desde la página de la promoción."
             onCancel={() => setRemoveLubellaModal(false)}
             onConfirm={() => {
-              removeLubellaPackFromCart()
+              removeSalePackFromCart()
               setRemoveLubellaModal(false)
             }}
           />
@@ -222,23 +219,21 @@ export default function CarritoPage() {
       <Modal open={detailsKitOpen} onClose={() => setDetailsKitOpen(false)}>
         <ModalDialog size="sm" sx={{ maxWidth: 400 }}>
           <Typography level="title-sm">Contenido del kit</Typography>
-          {lubellaPackInCart && (
+          {salePackInCart && (
             <Stack spacing={1.5} sx={{ mt: 1 }}>
-              {lubellaPackInCart.selectedLigeroModerado.map((p) => (
-                <Box key={p.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Box component="img" src={p.images} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
-                  <Typography level="body-sm">Ligero/Moderado: {p.name}</Typography>
-                </Box>
-              ))}
-              {lubellaPackInCart.selectedModeradoAbundante.map((p) => (
-                <Box key={p.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Box component="img" src={p.images} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
-                  <Typography level="body-sm">Moderado/Abundante: {p.name}</Typography>
-                </Box>
-              ))}
+              {salePackInCart.pack.lines.map((line) =>
+                (salePackInCart.selections[line.id] ?? []).map((p, idx) => (
+                  <Box key={`${line.id}-${p.id}-${idx}`} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Box component="img" src={p.images} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
+                    <Typography level="body-sm">
+                      {line.label}: {p.name}
+                    </Typography>
+                  </Box>
+                ))
+              )}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pt: 1, borderTop: '1px solid', borderColor: 'neutral.outlinedBorder' }}>
                 <Box component="img" src={detergentImage} alt="" sx={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'cover' }} />
-                <Typography level="body-sm">1 {LUBELLA_DETERGENT.name}</Typography>
+                <Typography level="body-sm">1 {SALE_DETERGENT.name}</Typography>
               </Box>
             </Stack>
           )}
@@ -305,7 +300,7 @@ export default function CarritoPage() {
         )
       })}
 
-      {cartItems.length === 0 && !lubellaPackInCart && (
+      {cartItems.length === 0 && !salePackInCart && (
         <Box sx={{ textAlign: 'center', py: 4 }}>
           <Typography sx={{ mb: 2, color: 'neutral.600' }}>No hay productos en el carrito.</Typography>
           <Button component={Link} href="/" variant="solid" sx={{ bgcolor: BRAND_GREEN }}>
@@ -314,7 +309,7 @@ export default function CarritoPage() {
         </Box>
       )}
 
-      {cartItems.length === 0 && lubellaPackInCart && (
+      {cartItems.length === 0 && salePackInCart && (
         <Typography level="body-sm" sx={{ color: 'neutral.600', mb: 2 }}>
           No hay otros productos en el carrito.
         </Typography>
