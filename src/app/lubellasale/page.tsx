@@ -12,7 +12,7 @@ import {
 } from '@mui/joy'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
 import Link from 'next/link'
-import { PIPOSALE_PACKS, packContentSummary, formatPackPrice } from '@/lib/salePack'
+import { LUBELLASALE_PACKS, packContentSummary, formatPackPrice } from '@/lib/salePack'
 import SalePackWizard from '@/components/SalePackWizard'
 import { HealthAndSafety } from '@mui/icons-material'
 import type { SalePack } from '@/lib/salePack'
@@ -25,7 +25,7 @@ const ACCENTS = {
 
 const BRAND_GREEN = '#7CBB48'
 
-export default function PiposalePage() {
+export default function LubellasalePage() {
   const [wizardPack, setWizardPack] = useState<SalePack | null>(null)
 
   return (
@@ -41,7 +41,7 @@ export default function PiposalePage() {
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Button
               component={Link}
-              href="/piposale/como-funcionan"
+              href="/lubellasale/como-funcionan"
               variant="outlined"
               size="md"
               sx={{
@@ -58,13 +58,13 @@ export default function PiposalePage() {
         </Container>
       </Box>
 
-      <Container sx={{ py: 4 }} id="packs-piposale">
+      <Container sx={{ py: 4 }} id="packs-lubellasale">
         <Typography level="h2" textAlign="center" sx={{ mb: 2, color: ACCENTS.rose.main, fontWeight: 800 }}>
           Escoge tu pack
         </Typography>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: 4 }}>
-          {PIPOSALE_PACKS.map((pack) => {
+          {LUBELLASALE_PACKS.map((pack) => {
             const accent = ACCENTS[pack.color]
             return (
               <Card
@@ -81,7 +81,7 @@ export default function PiposalePage() {
                   component="img"
                   src={pack.image}
                   alt={pack.name}
-                  sx={{ width: '100%', height: 220, objectFit: 'cover', bgcolor: '#FCE4EC' }}
+                  sx={{ width: '100%',  objectFit: 'cover', bgcolor: '#FCE4EC' }}
                 />
                 <CardContent>
                   <Typography level="h4" sx={{ fontWeight: 700, color: accent.main }}>
@@ -96,7 +96,7 @@ export default function PiposalePage() {
                       <Box component="span" sx={{ textDecoration: 'line-through', color: 'neutral.600', mr: 1 }}>
                         ${formatPackPrice(pack.priceOriginal)} MXN
                       </Box>
-                      ${formatPackPrice(pack.priceDiscounted)} MXN (20% Sale)
+                      ${formatPackPrice(pack.priceDiscounted)} MXN (20% descuento)
                     </Typography>
                   </Stack>
                   <Button
@@ -143,7 +143,7 @@ export default function PiposalePage() {
       {wizardPack && (
         <SalePackWizard
           pack={wizardPack}
-          campaign="piposale"
+          campaign="lubellasale"
           open={!!wizardPack}
           onClose={() => setWizardPack(null)}
         />

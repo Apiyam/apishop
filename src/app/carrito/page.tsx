@@ -96,7 +96,7 @@ export default function CarritoPage() {
 
   const hasAnything = cartItems.length > 0 || !!salePackInCart
   const detergentImage = SALE_DETERGENT.image || DETERGENT_PLACEHOLDER
-  const packEditHref = salePackInCart?.campaign === 'piposale' ? '/piposale' : '/expo-nacional'
+  const packEditHref = salePackInCart?.campaign === 'lubellasale' ? '/lubellasale' : '/expo-nacional'
 
   return (
     <Container maxWidth="md" sx={{ py: 3, bgcolor: 'background.body', minHeight: '80vh' }}>

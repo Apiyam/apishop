@@ -22,7 +22,6 @@ import { useRouter } from 'next/navigation'
 import {
   SalePack,
   SaleCampaign,
-  SALE_DETERGENT,
   PACK_SELECTION_STORAGE_KEY,
   productMatchesLine,
   formatPackPrice,
@@ -358,7 +357,7 @@ export default function SalePackWizard({ pack, campaign, open, onClose, onComple
           </Typography>
           <Box
             component="img"
-            src={SALE_DETERGENT.image || 'https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_DetergenteToallas.jpeg'}
+            src={'https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_DetergenteToallas.jpeg'}
             alt="Detergente"
             sx={{ width: 56, height: 56, borderRadius: 'md', objectFit: 'cover', mb: 2 }}
           />

@@ -33,13 +33,13 @@ export type SalePack = {
   color: 'pink' | 'rose' | 'green'
 }
 
-export type SaleCampaign = 'piposale' | 'expo-nacional'
+export type SaleCampaign = 'lubellasale' | 'expo-nacional'
 
 export const SALE_DETERGENT = {
   id: 4275,
   sku: '01040290000000000000000',
   name: 'Detergente Lubella',
-  image: process.env.NEXT_PUBLIC_LUBELLA_DETERGENT_IMAGE || '',
+  image: 'https://ecopipo.com/matriz/wp-content/uploads/2022/11/Ecopipo_DetergenteToallas.jpeg',
 } as const
 
 export const PACK_SELECTION_STORAGE_KEY = (campaign: SaleCampaign, packId: string) =>
@@ -53,12 +53,12 @@ export function formatPackPrice(amount: number): string {
   })
 }
 
-export const PIPOSALE_PACKS: SalePack[] = [
+export const LUBELLASALE_PACKS: SalePack[] = [
   {
     id: 'ligero',
     name: 'Pack Ligero',
     image:
-      'https://ecopipo.com/matriz/wp-content/uploads/2025/01/Toalla_marca_Lubella_Regular_Estrellitas.png',
+      '/imgs/luexpo1.jpg',
     priceOriginal: 1493,
     priceDiscounted: 1194,
     discountPercent: 20,
@@ -83,7 +83,7 @@ export const PIPOSALE_PACKS: SalePack[] = [
     id: 'moderado',
     name: 'Pack Moderado',
     image:
-      'https://ecopipo.com/matriz/wp-content/uploads/2025/02/Ecorevolucion25-Nocturna.png',
+      '/imgs/luexpo2.jpg',
     priceOriginal: 1602,
     priceDiscounted: 1281,
     discountPercent: 20,
@@ -114,9 +114,9 @@ export const PIPOSALE_PACKS: SalePack[] = [
     id: 'abundante',
     name: 'Pack Abundante',
     image:
-      'https://ecopipo.com/matriz/wp-content/uploads/2025/02/Ecorevolucion25-Nocturna.png',
+      '/imgs/luexpo3.jpg',
     priceOriginal: 1711,
-    priceDiscounted: 1369,
+    priceDiscounted: 1368,
     discountPercent: 20,
     color: 'green',
     detergente: 1,

@@ -3,13 +3,13 @@
 import React from 'react'
 import { Box, Container, Typography, Button, Divider, Stack } from '@mui/joy'
 import Link from 'next/link'
-import { PIPOSALE_PACKS, formatPackPrice } from '@/lib/salePack'
+import { LUBELLASALE_PACKS, formatPackPrice } from '@/lib/salePack'
 
 const LUBELLA_ROSE = '#d81b60'
 const LUBELLA_PINK = '#e91e8c'
 const LUBELLA_ROSE_HOVER = '#ad1649'
 
-export default function PiposaleComoFuncionanPage() {
+export default function LubellasaleComoFuncionanPage() {
   return (
     <Box sx={{ bgcolor: '#F8F8F8', minHeight: '100vh', color: '#333', py: 6 }}>
       <Container maxWidth="sm">
@@ -30,7 +30,7 @@ export default function PiposaleComoFuncionanPage() {
           </Typography>
 
           <Stack spacing={2} sx={{ mb: 3 }}>
-            {PIPOSALE_PACKS.map((pack) => (
+            {LUBELLASALE_PACKS.map((pack) => (
               <Box key={pack.id} sx={{ p: 2, borderRadius: 'md', bgcolor: 'background.surface' }}>
                 <Typography level="title-md" sx={{ fontWeight: 700, color: LUBELLA_ROSE }}>
                   {pack.name}
@@ -71,7 +71,7 @@ export default function PiposaleComoFuncionanPage() {
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Button
               component={Link}
-              href="/piposale#packs-piposale"
+              href="/lubellasale#packs-lubellasale"
               variant="solid"
               sx={{
                 bgcolor: LUBELLA_PINK,
