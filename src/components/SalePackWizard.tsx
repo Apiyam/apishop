@@ -33,7 +33,7 @@ const ACCENTS = {
   green: { main: '#7CBB48', hover: '#6aab3d' },
 } as const
 
-const IMG_PLACEHOLDER = '/imgs/place.png'
+const IMG_PLACEHOLDER = '/imgs/placeh.png'
 
 function getDisplayName(p: ProductItem): string {
   const n = (p.name || '').trim()
