@@ -19,13 +19,13 @@ export default function HomePage() {
   return (
     <>
     <Box>
-      {/* Hero section */}
-      
-      <center>
+      {/* Hero section  <center>
         <a href="/lubellasale">
           <img src="/imgs/lubesale.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
         </a>
-      </center>
+      </center> */}
+      
+     
       <HeroMain />
       <Box id="section-calzon-menstruals" component="section">
         <BenefitCards />
