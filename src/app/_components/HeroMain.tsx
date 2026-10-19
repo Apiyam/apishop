@@ -137,15 +137,11 @@ export default function HeroMain() {
      
       
           
-      {/*
-       <center>
-          <a href="/expo-nacional">
-            <img src="/imgs/expos.jpg" alt="Kit Expo 2026" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
+      <center>
+          <a href="https://www.ecopipo.promo/aniversario">
+            <img src="/imgs/lube-17.png" alt="Aniversario 17 Lubella" style={{ width: '100%', height: 'auto', maxWidth: '1200px', margin: '0 auto', cursor: 'pointer' }} />
           </a>
         </center>
-      
-      
-      Fondo con parallax */}
       <motion.div
         style={{
           y: y1,
